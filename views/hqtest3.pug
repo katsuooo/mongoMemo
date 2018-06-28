@@ -1,0 +1,50 @@
+doctype html
+html
+  head
+    title socke.io chat
+    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
+    link(rel='stylesheet',href='/stylesheets/hqtest3.css',type='text/css')
+  body
+    //h1= title
+    //button(class='btn btn-default' id='btn_req' type='button').
+    //  req on
+    //button(class='btn btn-primary', type='button').
+    //  Primary
+    //button(class='btn btn-success', type='button').
+    //  Success
+    //button(class='btn btn-info', type='button').
+    //  Info
+    //button(class='btn btn-warning', type='button').
+    //  Warning
+    //button(class='btn btn-danger', type='button').
+    //  Danger
+    //button(class='btn btn-link', type='button').
+    //  Link
+    section(class="container")
+      h1= title
+    section(class="container")
+      div#datain
+        textarea#m(cols=max_width,rows='10',autocomplete='off')
+        button#send(class='btn btn-danger', type='button') Send
+    //section(class="container")
+    //  div(class="panel panel-default")
+    //    div(class="panel-heading") 
+    //      商品1
+    //    div(class="panel-body")
+    //      商品1の説明
+    section(class="container")
+      //ul#message_list
+      div#message_list
+    //section(class="container")
+    //  ul#messages   
+    section(class="container")
+      div#nextbtnbox
+      button#nextbtn(class='btn btn-info', type='button').
+        next10
+    //script(src='https://cdn.socket.io/socket.io-1.2.0.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js')
+    script(src='http://code.jquery.com/jquery-1.11.1.js')
+    script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
+    script(src='/javascripts/hqtest3.js')
+    script(src='/javascripts/jquery.autosize.js')
+
