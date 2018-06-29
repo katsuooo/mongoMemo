@@ -1,3 +1,15 @@
+180629
+memoEventにdateformat追加。元のsocketio
+npm install dateformat --save >>> @3.0.3
+
+
+
+
+
+
+
+
+
 180628
 
 gen mongo memo repository
@@ -11,6 +23,7 @@ npm install pug --save
 
 express作成時に--pugつけ忘れたので、追加install
 viewないのファイル拡張子を.pugに変更
+
 
 
 

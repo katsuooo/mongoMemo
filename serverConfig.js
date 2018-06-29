@@ -10,30 +10,27 @@
 
 
 
-var ecoaceAppConfig = {
-    datetime       : "2016-05-18 20:55:09.334383",
-    parent_address : "1000000",
-    power_factor   : "80",
-  
-  }
-  
-  
-  
-  
-  
-  
-  var serverConfig = {
+var meoAppConfig = {
+    datetime       : "2018-06-28 20:55:09.334383"
 
+}
+  
+  
+  
+  
+  
+  
+var serverConfig = {
     /*
-      mongodb
+      mongodb (for 3.1.1)
     */
-    MONGO_URL : 'mongodb://192.168.10.132:27017/myMemo',  // mongodb url
-  
-
-  }
-  
-  
+    MONGO_URL : 'mongodb://192.168.10.132:27017',  // mongodb url
+    MONGO_DB_NAME : 'myMemo',
+    MONGO_COLLECTION_NAME: 'text'
+}
   
   
-  module.exports = serverConfig;
+  
+  
+module.exports = serverConfig;
   

@@ -92,4 +92,5 @@ function onListening() {
 /*
 myApps
 */
-var mongoif = require('../mongoif')(server);
+//var mongoif = require('../mongoif')(server);
+var socketManager = require('../socketManager')(server);
