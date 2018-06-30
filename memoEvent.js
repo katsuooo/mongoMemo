@@ -55,10 +55,11 @@ var dateformat = require('dateformat');
  socketioにeventを併用している。
  不要かもしれない。
 */
+/*
 var EventEmitter = require('events').EventEmitter;
 var ev = new EventEmitter();
 var evw = new EventEmitter();
-
+*/
 
 /*
 memo event
@@ -73,7 +74,7 @@ function memoEvent(socket){
     socket.on('memostart', function(){
         console.log('memo start!!!');
         const rdnum = 10;
-        mongohq.readlimit(rdnum, ev);
+        mongohq.readlimit(rdnum);
     });
     /*
      write
@@ -84,13 +85,14 @@ function memoEvent(socket){
             date: dateformat(new Date(), 'yyyy-mm-dd HH:MM:ss'),
             text: docs
         }
-        mongohq.write(wdata, ev);
+        mongohq.write(wdata);
     });
     /*
      delete
     */
     socket.on('memodelete', function(id){
         console.log('memo delete!!!', id);
+        mongohq.deletebyId(id);
     });
     /*
      update

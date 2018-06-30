@@ -18,8 +18,36 @@ const MONGOHQ_URL = CONFIG.MONGO_URL;
 const dbName = CONFIG.MONGO_DB_NAME;
 const collectionName = CONFIG.MONGO_COLLECTION_NAME;
 
+
+
+/*
+ セカンドリードリミット
+ write, delete後にデータをリードする。
+ データ数１０
+ コネクションができている状態からたたかれる。
+*/
+const mongo2ndRead = function(collection, client){
+    var dnum = 10;
+    collection.find({}).sort({date:-1}).limit(dnum).toArray(function(err, docs) {
+        if (err) {
+            return console.error(err);
+        }
+        client.close();
+        console.log('read after write', docs);
+        /*
+         clientにsocketioデータを送る
+        */
+        io.emit('readall', docs);
+    });    
+}
+
+/*
+ mongoif
+
+ exports func
+*/
 var mongoif = {
-    readlimit : function(dnum, ev){
+    readlimit : function(dnum){
         MongoClient.connect(MONGOHQ_URL, function(err, client) {
             if(err){
                 return console.error(err);
@@ -30,15 +58,12 @@ var mongoif = {
                 if (err) {
                     return console.error(err);
                 }
-                docs.forEach(function(doc) {
-                })
-                //event.emit('mongoread', docs);
+                io.emit('readall', docs);
                 client.close();
-                console.log(docs)
             })
         })
     },
-    write : function(json, wevent){
+    write : function(json){
         MongoClient.connect(MONGOHQ_URL, function(err, client) {
             if(err){
                 return console.error(err);
@@ -50,7 +75,6 @@ var mongoif = {
                 if (err) {
                     return console.error(err);
                 }
-                //console.log(docs);
                 /*
                 json 要素数
                 */
@@ -60,6 +84,7 @@ var mongoif = {
                 /*
                 write後にデータ読む
                 */
+                /*
                 var dnum = 10;
                 collection.find({}).sort({date:-1}).limit(dnum).toArray(function(err, docs) {
                     if (err) {
@@ -67,11 +92,11 @@ var mongoif = {
                     }
                     client.close();
                     console.log('read after write', docs);
-                    /*
-                     clientにsocketioデータを送る
-                    */
+                    //clientにsocketioデータを送る
                     io.emit('readall', docs);
                 })
+                */
+                mongo2ndRead(collection, client);
             })
         })
     },
@@ -80,7 +105,41 @@ var mongoif = {
     },
     delete : function(){
 
-    }
+    },
+    deleteOne : function(delKey){
+        console.log('deleteOne', delKey);
+        MongoClient.connect(MONGOHQ_URL, function(err, client) {
+            if(err){
+                return console.error(err);
+            }
+            const db = client.db(dbName);
+            const collection = db.collection(collectionName);
+            collection.deleteOne(function(err, docs) {
+                if (err) {
+                    return console.error(err);
+                }
+                io.emit('readall', docs);
+                client.close();
+            })
+        })
+    },
+    deletebyId : function(delid){
+        console.log('deleteOnebyid', delid);
+        MongoClient.connect(MONGOHQ_URL, function(err, client) {
+            if(err){
+                return console.error(err);
+            }
+            const db = client.db(dbName);
+            const collection = db.collection(collectionName);
+            idjson = {_id: new mongodb.ObjectID(delid)};
+            collection.deleteOne(idjson, function(err, docs) {
+                if (err) {
+                    return console.error(err);
+                }
+                mongo2ndRead(collection, client);
+            })
+        })
+    },
 }
 
 module.exports = mongoif;
