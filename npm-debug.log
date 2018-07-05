@@ -9,7 +9,7 @@
 6 silly lifecycle mongomemo@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle mongomemo@0.0.0~start: mongomemo@0.0.0
 8 verbose lifecycle mongomemo@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle mongomemo@0.0.0~start: PATH: C:\Program Files (x86)\Nodist\npmv\4.0.5\bin\node-gyp-bin;D:\node\mongoMemo\node_modules\.bin;C:\Program Files (x86)\Nodist\v-x64\10.5.0;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Nodist\bin;C:\WINDOWS\System32\OpenSSH\;C:\Users\katsu\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Microsoft VS Code\bin
+9 verbose lifecycle mongomemo@0.0.0~start: PATH: C:\Program Files (x86)\Nodist\npmv\4.0.5\bin\node-gyp-bin;D:\node\mongoMemo\node_modules\.bin;C:\Program Files (x86)\Nodist\v-x64\10.5.0;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Nodist\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Users\katsu\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Microsoft VS Code\bin;C:\Users\katsu\AppData\Roaming\npm;C:\Users\katsu\AppData\Local\Yarn\bin
 10 verbose lifecycle mongomemo@0.0.0~start: CWD: D:\node\mongoMemo
 11 silly lifecycle mongomemo@0.0.0~start: Args: [ '/d /s /c', 'node ./bin/www' ]
 12 silly lifecycle mongomemo@0.0.0~start: Returned: code: 1  signal: null

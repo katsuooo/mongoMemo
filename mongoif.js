@@ -33,7 +33,7 @@ const mongo2ndRead = function(collection, client){
             return console.error(err);
         }
         client.close();
-        console.log('read after write', docs);
+        console.log('read after write');
         /*
          clientにsocketioデータを送る
         */
@@ -100,8 +100,22 @@ var mongoif = {
             })
         })
     },
-    update :  function(){
-
+    update :  function(json){
+        var objectid = new mongodb.ObjectID.createFromHexString(json.id);
+        MongoClient.connect(MONGOHQ_URL, function(err, client) {
+            if(err){
+                return console.error(err);
+            }
+            const db = client.db(dbName);
+            const collection = db.collection(collectionName);
+            collection.update({_id: objectid}, {text: json.text, date: json.date},function(err, result) {
+                if (err) {
+                    return console.error(err);
+                }
+                console.log('one update ok!: ', json);
+                mongo2ndRead(collection, client);
+            });
+        });
     },
     delete : function(){
 

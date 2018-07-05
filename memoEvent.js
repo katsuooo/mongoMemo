@@ -67,6 +67,11 @@ memo event
  events
  memostart, memowrite, memodelete, memoupdate, next
 */
+/*
+ read data num
+*/
+var rdnum = 10;
+
 function memoEvent(socket){
     /*
      start
@@ -97,14 +102,17 @@ function memoEvent(socket){
     /*
      update
     */
-    socket.on('', function(json){
+    socket.on('memoupdate', function(json){
         console.log('memo update!!!', json);
+        mongohq.update(json);
     });
     /*
      next
     */
-    socket.on('', function(){
+    socket.on('next', function(){
         console.log('memo next!!!');
+        rdnum += 10;
+        mongohq.readlimit(rdnum);
     });
 }
 
