@@ -1,5 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 mongoMemo
+  br
+  p database
+  p mongodb 192.168.10.132:27017
+  p db:myMemo
+  p collection:test
+  p page: ./hqtest3
+  form(action='./hqtest3')
+    input(type='submit' value='simple Memo')
+  br 
+  p db:myMemo
+  p collection:pgmemo
+  p page: ./pgmemo
+  form(action='./pgmemo')
+    input(type='submit' value='program Memo')  
