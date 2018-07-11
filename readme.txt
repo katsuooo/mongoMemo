@@ -1,73 +1,42 @@
-180707
-yarnでやってみた。
-ubuntu18
-yarn
-でinstall
+mongodb memo
+
+
+mongodb adress/port
+192.168.10.132/27017
+
+mongodbはlan上のpcにインストール
+mongoconfigの設定
+
+
+/*
+versions (180711)
+*/
+node version 9.11.2
+npm version 5.6.0
+yarn version 1.7.0
+
+
+/*
+start
+*/
+npm start
+or
 yarn run start
-でnpm start
-になるらしい。
-yarnはグローバルインストールしてる。
 
-node
-v9.11.2
+index.html
+でmemo pageのselect
 
-memoがどんどんふえる。
-localのmongo動いてない。
-サーバーのモンゴでいいのか。
 
-viewからつくるか。
-inputをつけるかどうかつけて畳める？
-機能から先に実装するか。
-react全然間に合わない。
-angular1でかく。今ならこれが一番はやいか。
+/*
+simple memo page (controled by jquery)
+*/
 
-プログラム用にするか。
-mongo collection / pgMemoにしちゃうか。
-property
- platform: win10, win, ubuntu18, linux, pic, smart_phone
- langage: python, node, angular, react, html, css, c, other
- title
- tag
- text
-
-cdn
-bootstrap4
-angular1
-
-2カラムできる？
-router pgmemo
-app.jsにpage追加
+localhost:3000/hqtest
 
 
 
 
 
-
-180629
-memoEventにdateformat追加。元のsocketio
-npm install dateformat --save >>> @3.0.3
-
-
-
-
-
-
-
-
-
-180628
-
-gen mongo memo repository
-
-gen express mongoMemo >>> copy files to this repository
-add module
-
-npm install socketio --save
-npm install mongodb --save
-npm install pug --save
-
-express作成時に--pugつけ忘れたので、追加install
-viewないのファイル拡張子を.pugに変更
 
 
 
