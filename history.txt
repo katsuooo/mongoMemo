@@ -1,3 +1,28 @@
+180711
+pgmemo
+入力をつくる。
+mongo
+db myMemo
+collection pgmemo
+
+date >>> 自動入力
+title >>> text
+tag >>>> preset/python, node, javascriot, angular, react, html, css, c, other
+platform >>> preset/win10, win, mac, ubuntu18, ubuntu, linux, pic, embeded, other
+text >>> memo内容
+
+presetは後に編集可とする。
+severConfigにpgmemoの項目を追加する。
+yamlで新規に作成することにする。
+
+
+
+
+
+
+
+
+
 180707
 yarnでやってみた。
 ubuntu18

@@ -5,7 +5,8 @@
 */
 
 
-var memoEvent = require('./memoEvent');
+var memoEvent = require('./events/memoEvent');
+var pgmemoEvent = require('./events/pgmemoEvent');
 
 
 
@@ -24,6 +25,7 @@ function socketManager(server){
         require('child_process').exec('start "" "c:\\enesave\\ecoace\\ecoaceCsv"');
       });
       */
+      pgmemoEvent(socket);
     });
 }
 

@@ -47,8 +47,9 @@ io.on('connection', function(socket){
 */
 
 
-var mongohq = require('./mongoif');
+//var mongohq = require('./mongoif');
 
+var mongohq = require('../mongoif/mongoif')
 var dateformat = require('dateformat');
 
 /*

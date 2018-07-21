@@ -10,13 +10,38 @@
   mongoif command
  readlimit, write, update, delete
 */
-
-
 var mongodb = require('mongodb'), MongoClient = mongodb.MongoClient;
+/*
+from serverConfig.js
+
 var CONFIG = require('./serverConfig');
 const MONGOHQ_URL = CONFIG.MONGO_URL;
 const dbName = CONFIG.MONGO_DB_NAME;
 const collectionName = CONFIG.MONGO_COLLECTION_NAME;
+*/
+/*
+from ./config/memoConfig.yaml
+*/
+/*
+var fs = require('fs');
+var yaml = require('js-yaml');
+
+try {
+  const CONFIG = yaml.safeLoad(fs.readFileSync('./config/memoConfig.yaml'));
+  console.log(CONFIG);
+  var MONGOHQ_URL = CONFIG.mongodb.url + ':' + CONFIG.mongodb.port.toString();
+  var dbName = CONFIG.mongodb.db;
+  var collectionName = CONFIG.mongodb.collection.simple;  
+  console.log(MONGOHQ_URL);
+}catch (e) {
+  console.log(e);
+}
+*/
+const CONFIG = require('../config/config.js').CONFIG;
+
+const MONGOHQ_URL = CONFIG.mongodb.url + ':' + CONFIG.mongodb.port.toString();
+const dbName = CONFIG.mongodb.db;
+const collectionName = CONFIG.mongodb.collection.simple;  
 
 
 

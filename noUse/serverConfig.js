@@ -26,7 +26,7 @@ var serverConfig = {
     */
     MONGO_URL : 'mongodb://192.168.10.132:27017',  // mongodb url
     MONGO_DB_NAME : 'myMemo',
-    MONGO_COLLECTION_NAME: 'text'
+    MONGO_COLLECTION_NAME: 'text',
 }
   
   
