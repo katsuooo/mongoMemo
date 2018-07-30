@@ -8,3 +8,12 @@ pg memo page style
 #cblabel{
     margin-right: 5px;
 }
+
+
+/*
+ checkbox layout
+*/
+.my-form-inline {
+    display: inline;
+    padding-left: 30px;
+}

@@ -3,20 +3,29 @@
 pg memo controller
 */
 
-console.log('pg memo start');
 
-var app = angular.module('pgmemoApp', []);
+
+
+
+
+
+
+
+
+/*
+checkbox click
+*/
 
 /*
  type checkbox click
 */
 var toggleType = function(name, $scope){
     console.log('click type');
-    var idx = $scope.typeSelection.indexOf(name);
+    var idx = $scope.pgmemo.type.indexOf(name);
     if (idx > -1){      // already selected
-        $scope.typeSelection.splice(idx, 1);
+        $scope.pgmemo.type.splice(idx, 1);
     }else {             // newly selected
-        $scope.typeSelection.push(name);
+        $scope.pgmemo.type.push(name);
     }
 }
 /*
@@ -24,36 +33,95 @@ var toggleType = function(name, $scope){
 */
 var togglePlatform = function(name, $scope){
     console.log('click type');
-    var idx = $scope.platformSelection.indexOf(name);
+    var idx = $scope.pgmemo.platform.indexOf(name);
     if (idx > -1){      // already selected
-        $scope.platformSelection.splice(idx, 1);
+        $scope.pgmemo.platform.splice(idx, 1);
     }else {             // newly selected
-        $scope.platformSelection.push(name);
+        $scope.pgmemo.platform.push(name);
     }
+}
+
+/*
+ input on button handlar
+*/
+var inputBtnOn = function(memos){
+  console.log('input button on', memos);
 }
 
 
 
-/*
- pgmemo inputs controller
-*/
+var app = angular.module('pgmemoApp', []);
 app.controller('pgmemoCont', function($scope, socket){
-    console.log('socket test');
-    socket.emit('pgmemoReadAll');
-    socket.emit('pgmemoReadInfo');
-    socket.on('pgmemoPutInfo', function(info){
-        console.log('pgmemo get info:', info);
-        $scope.info = info;
-    });
-    $scope.typeSelection = [];       // type selected array
-    $scope.platformSelection = [];   // platform selected array
-    $scope.toggleType = function(name){ // type click
-        toggleType(name, $scope);
-    }
-    $scope.togglePlatform = function(name){ //platform click
-        togglePlatform(name, $scope);
-    }
-    $scope.pgmemoTitle = '';
-    $scope.pgmemoTag = 'ここにカンマ区切りタグ';
-    $scope.pgmemoText = 'ここに本文';
+ console.log('angularjs(1) base');
+ $scope.test = 'teat val';
+ 
+ socket.emit('pgmemoReadAll');
+ socket.emit('pgmemoReadInfo');
+ socket.on('pgmemoPutInfo', function(info){
+     console.log('pgmemo get info:', info);
+     $scope.info = info;
+ });
+ 
+ 
+  $scope.pgmemo = {
+    title:'',
+    type:[],
+    platform:[],
+    tag:'',
+    text:''
+  }
+ 
+  /*
+  checkboxで選択された要素の配列
+  */
+  /*
+  $scope.typeSelection = [];
+  $scope.platformSelection = [];
+  */
+  $scope.toggleType = function(name){
+    toggleType(name, $scope);
+  }
+  $scope.togglePlatform = function(name){
+    togglePlatform(name, $scope);
+  }
+
+  /*
+   checkbox data
+  */
+ /*
+  $scope.info = {
+    type:[
+      'python',
+      'node',
+      'angularjs',
+      'reactjs',
+      'javascript',
+      'bootstrap',
+      'html',
+      'css',
+      'c'
+    ],
+    platform:[
+      'win10',
+      'windows',
+      'ubuntu18',
+      'ubuntu',
+      'linux',
+      'mac',
+      'pic',
+      'embedded'
+    ]
+  }
+  */
+  /*
+   input On button
+  */
+  $scope.inputOn = function(){
+    inputBtnOn($scope.pgmemo);
+  }
+
+ 
+ 
 });
+
+
