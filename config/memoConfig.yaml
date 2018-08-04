@@ -48,3 +48,5 @@ pgmemo :
     - mac
     - pic
     - embedded
+  recentMemoNum :
+    20

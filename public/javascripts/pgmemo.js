@@ -53,13 +53,14 @@ var inputBtnOn = function(memos){
 var app = angular.module('pgmemoApp', []);
 app.controller('pgmemoCont', function($scope, socket){
  console.log('angularjs(1) base');
- $scope.test = 'teat val';
+ //$scope.test = 'teat val';
  
- socket.emit('pgmemoReadAll');
+ //socket.emit('pgmemoReadAll');
  socket.emit('pgmemoReadInfo');
  socket.on('pgmemoPutInfo', function(info){
      console.log('pgmemo get info:', info);
      $scope.info = info;
+     socket.emit('pgmemoReadLimit');
  });
  
  
@@ -118,10 +119,15 @@ app.controller('pgmemoCont', function($scope, socket){
   */
   $scope.inputOn = function(){
     inputBtnOn($scope.pgmemo);
+    socket.emit('pgmemoNew', $scope.pgmemo);
   }
 
- 
- 
+  /*
+   readLimit on
+  */
+  socket.on('pgmemoReadLimit', function(d){
+    console.log('pgmemoReadLimit', d);
+  });
 });
 
 

@@ -15,25 +15,119 @@ var mongodb = require('mongodb'), MongoClient = mongodb.MongoClient;
 var fs = require('fs');
 var yaml = require('js-yaml');
 
+
+var config = {};
 try {
-  const CONFIG = yaml.safeLoad(fs.readFileSync('./config/memoConfig.yaml'));
-  //console.log(CONFIG);
-  const MONGOHQ_URL = CONFIG.MONGO_URL;
-  const dbName = CONFIG.MONGO_DB_NAME;
-  const collectionName = CONFIG.MONGO_COLLECTION_NAME;  
+  config= yaml.safeLoad(fs.readFileSync('./config/memoConfig.yaml'));
+
 }catch (e) {
   console.log(e);
 }
 
+//const CONFIG = config;
+const CONFIG = require('../config/config.js').CONFIG;
+const MONGO_URL = CONFIG.mongodb.url + ':' + CONFIG.mongodb.port;
+const dbName = CONFIG.mongodb.db;
+const collectionName = CONFIG.mongodb.collection.pgmemo;  
+
+
 /*
 import memo interfaces
 */
-var simpleMongo = require('./simpeleMongo');
-var pgMongo = require('./pgMongo');
+/*
+メモアプリごとにmongoモジュールをつくろうかと考えたが一旦やめる
+*/
+//var simpleMongo = require('./simpeleMongo');
+//var pgMongo = require('./pgMongo');
+
+
+/*
+セカンドリードリミット
+write, delete後にデータをリードする。
+データ数１０
+コネクションができている状態からたたかれる。
+*/
+const mongo2ndRead = function(collection, client){
+   var dnum = CONFIG.pgmemo.recentMemoNum;
+   collection.find({}).sort({date:-1}).limit(dnum).toArray(function(err, docs) {
+       if (err) {
+           return console.error(err);
+       }
+       client.close();
+       console.log('read after write');
+       /*
+        clientにsocketioデータを送る
+       */
+       io.emit('pgmemoReadLimit', docs);
+   });    
+}
+
 
 
 var mongoifMain = {
-
+  /*
+   write
+  */
+  write : function(mongoCollection, json){
+    MongoClient.connect(MONGO_URL, {useNewUrlParser:true}, function(err, client) {
+        if(err){
+            return console.error(err);
+        }
+        const db = client.db(dbName);
+        const collection = db.collection(mongoCollection);
+        collection.insert(json, function(err, docs){
+            if (err) {
+                return console.error(err);
+            }
+            /*
+            json 要素数
+            */
+            var jnum = Object.keys(docs).length;
+            console.log('just inserted ', jnum, ' new documents!');
+            /*
+            write後にデータ読む
+            */
+            mongo2ndRead(collection, client);
+        })
+    });
+  },
+  /*
+   read limit
+  */
+  /* 
+  readLimit : function(colName, dnum){
+    MongoClient.connect(MONGO_URL, function(err, client) {
+        if(err){
+            return console.error(err);
+        }
+        const db = client.db(dbName);
+        const collection = db.collection(colName);
+        collection.find({}).sort({date:-1}).limit(dnum).toArray(function(err, docs) {
+            if (err) {
+                return console.error(err);
+            }
+            io.emit('pgmemoReadLimit', docs);
+            client.close();
+        })
+    })
+  }
+  */
+  readLimit : function(colName, dnum){
+    MongoClient.connect(MONGO_URL, {useNewUrlParser:true}, function(err, client) {
+        if(err){
+            return console.error(err);
+        }
+        const db = client.db(dbName);
+        const collection = db.collection(colName);
+        collection.find({}).sort({date:-1}).limit(dnum).toArray(function(err, docs) {
+            if (err) {
+                return console.error(err);
+            }
+            io.emit('pgmemoReadLimit', docs);
+            client.close();
+        })
+    })
+  }
 }
 
 module.exports = mongoifMain;

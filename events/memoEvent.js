@@ -12,39 +12,7 @@ node_memo_socketioのsocketioイベント部
  mongoif command
  readlimit, write, update, delete
 */
-/*
-io.on('connection', function(socket){
-    socket.on('chat', function(msg){
-		  io.emit('chat', msg);	
-	  });
-		socket.on('memostart', function(){
-			console.log('socket-memostart');
-			//mongohq.readall(ev);
-			rdnum = 10;
-			mongohq.readlimit(rdnum, ev);
-		});
-		socket.on('memowrite', function(text, ev){
-			console.log('socket-write: '+text);
-			var wdata = {
-				date: dateformat(new Date(), 'yyyy-mm-dd HH:MM:ss'),
-				text: text
-			}
-			mongohq.write(wdata, evw);
-		});
-		socket.on('memodelete', function(id){
-			console.log('socket-deleat: '+id);
-			mongohq.delete(id, evw);
-		});
-		socket.on('memoupdate', function(json){
-			console.log('socket-update: ',json);
-			mongohq.update(json, evw);
-		});
-		socket.on('next', function(){
-			rdnum += 10;
-			mongohq.readlimit(rdnum, ev);
-		});
-  });
-*/
+
 
 
 //var mongohq = require('./mongoif');
