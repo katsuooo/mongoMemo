@@ -5,22 +5,25 @@ html(ng-app='pgmemoApp')
     meta(name='veiwport' content='width=device-width initial-scale=1')
     title pgMemo
     link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css')
     link(rel='stylesheet' href='./stylesheets/pgmemo.css')
     script(src='https://code.jquery.com/jquery-3.3.1.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js')
+    script(src='./javascripts/pgmemoRecently.js')      
     script(src='./javascripts/pgmemo.js')  
     script(src='./javascripts/services.js')   
   body
     .container-fluid(ng-controller='pgmemoCont')
       h1 program Memo
       .row
-        .col-sm-3.bg-success
+        .col-sm-3.bg-default
           h3 recent 20
+          include pgmemoRecent
         .col-sm-9.bg-warning
-          include pgmemoInput.pug
+          include pgmemoInput
           br
           br
           span {{typeSelection}} {{platformSelection}}

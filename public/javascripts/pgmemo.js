@@ -50,7 +50,14 @@ var inputBtnOn = function(memos){
 
 
 
+
+
+
+
 var app = angular.module('pgmemoApp', []);
+/*
+ new form controller
+*/
 app.controller('pgmemoCont', function($scope, socket){
  console.log('angularjs(1) base');
  //$scope.test = 'teat val';
@@ -127,7 +134,13 @@ app.controller('pgmemoCont', function($scope, socket){
   */
   socket.on('pgmemoReadLimit', function(d){
     console.log('pgmemoReadLimit', d);
+    $scope.pgmemos = d;
   });
+
+  /*
+   recently
+  */
+  pgmemoRecently($scope, socket);
 });
 
 
