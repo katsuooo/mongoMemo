@@ -33,15 +33,30 @@ var tagBreak = function(str){
     var x = str.replace(/\s/g, '');
     xx = x.split(',');
     return xx;
-  }
-  /*
-   new memo adjust
-  */
-  var jsonMemoAdjust = function(json){
-      json.tag = tagBreak(json.tag);
-      json.date = dateformat(new Date(), 'yyyy-mm-dd HH:MM:ss');
-      return json;
-  }
+}
+/*
+new memo adjust
+*/
+var jsonMemoAdjust = function(json){
+    json.tag = tagBreak(json.tag);
+    json.date = dateformat(new Date(), 'yyyy-mm-dd HH:MM:ss');
+    return json;
+}
+/*
+ check new or update
+ _idデータがある場合はupdateする。
+ ない場合は新規
+*/
+var checkIdtag = function(newMemo){
+    newMemo = jsonMemoAdjust(newMemo);
+    if('_id' in newMemo){
+        mongoMain.update(pgmemoColName, newMemo);
+    }else{
+        mongoMain.write(pgmemoColName, newMemo);
+    }
+}
+
+
 
 /*
  mongo interface
@@ -65,8 +80,11 @@ function pgmemoEvent(socket) {
         socket.emit('pgmemoPutInfo', PGMEMOINFO);
     });
     socket.on('pgmemoNew', function(newMemo){
-        newMemo = jsonMemoAdjust(newMemo);
-        mongoMain.write(pgmemoColName, newMemo);
+        checkIdtag(newMemo);
+    });
+    socket.on('pgmemoDelete', function(delID){
+        console.log('del');
+        mongoMain.deletebyId(pgmemoColName, delID);
     });
 };
 

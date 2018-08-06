@@ -127,7 +127,43 @@ var mongoifMain = {
             client.close();
         })
     })
-  }
+  },
+  deletebyId : function(colName, delid){
+    console.log('deleteOnebyid', delid);
+    MongoClient.connect(MONGO_URL, {useNewUrlParser:true}, function(err, client) {
+        if(err){
+            return console.error(err);
+        }
+        const db = client.db(dbName);
+        const collection = db.collection(colName);
+        idjson = {_id: new mongodb.ObjectID(delid)};
+        collection.deleteOne(idjson, function(err, docs) {
+            if (err) {
+                return console.error(err);
+            }
+            mongo2ndRead(collection, client);
+        })
+    })
+  },
+  update :  function(colName, json){
+    var objectid = new mongodb.ObjectID.createFromHexString(json._id);
+    //var objectid = json._id;
+    MongoClient.connect(MONGO_URL, {useNewUrlParser:true}, function(err, client) {
+        if(err){
+            return console.error(err);
+        }
+        const db = client.db(dbName);
+        const collection = db.collection(collectionName);
+        //collection.update({_id: objectid}, {text: json.text, date: json.date},function(err, result) {
+        delete json._id;
+        collection.update({_id: objectid}, json, function(err, result) {
+            if (err) {
+                return console.error(err);
+            }
+            mongo2ndRead(collection, client);
+        });
+    });
+  }  
 }
 
 module.exports = mongoifMain;

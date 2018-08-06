@@ -2,14 +2,39 @@
 /*
  pgmemo left side bar
 */
-
+/*
+ clear hens
+*/
+var clearHens = function(pgmemo){
+  pgmemo.title = '';
+  pgmemo.type = [];
+  pgmemo.platform = [];
+  pgmemo.tag = '';
+  pgmemo.text = '';
+}
 
 /*
  henshuu item load
 */
+/*
+$scope.pgmemo = {
+  title:'',
+  type:[],
+  platform:[],
+  tag:'',
+  text:''
+}
+*/
+var loadHens = function($scope, memo){
+  $scope.pgmemo = jQuery.extend(true, {}, memo);
 
-var loadHens = function(memo){
-  console.log('load hen data', memo);
+  var hai = $scope.pgmemo.tag.join(', '); 
+  $scope.pgmemo.tag = hai;
+  /*
+   $$hashkeyを削除する
+  */
+  $scope.pgmemo = JSON.parse(angular.toJson($scope.pgmemo));
+  console.log('x',$scope.pgmemo, typeof($scope.pgmemo));
 }
 
 
@@ -23,6 +48,7 @@ var pgmemoRecently = function($scope, socket){
   $scope.pgDelete = function(id){
     console.log('del click', id);
     if(confirm('delete?')){
+      console.log('del confirm');
       socket.emit('pgmemoDelete', id);
     }
   }
@@ -30,9 +56,9 @@ var pgmemoRecently = function($scope, socket){
    hen icon on
   */
   $scope.pgHen = function(memo){
-    console.log('hen click', memo);
+    console.log(memo);
     if(confirm('編集する？')){
-      loadHens(memo);
+      loadHens($scope, memo);
     }
   }
 }
