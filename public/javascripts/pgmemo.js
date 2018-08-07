@@ -169,15 +169,15 @@ app.controller('pgmemoCont', function($scope, socket){
   $scope.inputOn = function(){
     inputBtnOn($scope.pgmemo);
     socket.emit('pgmemoNew', $scope.pgmemo);
+    //clearHens($scope.pgmemo);
   }
 
   /*
    readLimit on
   */
   socket.on('pgmemoReadLimit', function(d){
-    console.log('pgmemoReadLimit', d);
     $scope.pgmemos = pgmemoCheck($scope, d);
-    //clearHens($scope.pgmemo);
+    clearHens($scope);
   });
 
   /*

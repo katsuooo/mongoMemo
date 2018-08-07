@@ -5,12 +5,13 @@
 /*
  clear hens
 */
-var clearHens = function(pgmemo){
-  pgmemo.title = '';
-  pgmemo.type = [];
-  pgmemo.platform = [];
-  pgmemo.tag = '';
-  pgmemo.text = '';
+var clearHens = function($scope){
+  $scope.pgmemo = {};
+  $scope.pgmemo.title = '';
+  $scope.pgmemo.type = [];
+  $scope.pgmemo.platform = [];
+  $scope.pgmemo.tag = '';
+  $scope.pgmemo.text = '';
 }
 
 /*

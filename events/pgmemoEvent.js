@@ -43,15 +43,29 @@ var jsonMemoAdjust = function(json){
     return json;
 }
 /*
+ henshuu timestump
+ dateは変更せず、変更時間をhenDateに追加する
+*/
+var henMemoAdjust = function(json){
+    json.tag = tagBreak(json.tag);
+    var nowDate = dateformat(new Date(), 'yyyy-mm-dd HH:MM:ss')
+    if(!('henDate' in json)){
+        json.henDate = []
+    }
+    json.henDate.push(nowDate);
+    return json;  
+}
+/*
  check new or update
  _idデータがある場合はupdateする。
  ない場合は新規
 */
 var checkIdtag = function(newMemo){
-    newMemo = jsonMemoAdjust(newMemo);
     if('_id' in newMemo){
-        mongoMain.update(pgmemoColName, newMemo);
+        henMemo = henMemoAdjust(newMemo);
+        mongoMain.update(pgmemoColName, henMemo);
     }else{
+        newMemo = jsonMemoAdjust(newMemo);
         mongoMain.write(pgmemoColName, newMemo);
     }
 }
