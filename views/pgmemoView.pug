@@ -7,7 +7,7 @@ div(ng-repeat='pgm in pgmemoSels')
   span.badge.badge-pill.badge-primary(ng-repeat='platform in pgm.platform') {{platform}}
   span.badge.badge-pill.badge-danger(ng-repeat='tag in pgm.tag') {{tag}}
   div
-    span {{pgm.text}}
+    textarea(cols="100") {{pgm.text}}
   //span {{pgmemo._id}}
   span.oi.oi-aperture(title='aperture' aria-hidden='true' ng-click='pgHen(pgm)')
   span.oi.oi-trash(title='trash' aria-hidden='true' ng-click='pgDelete(pgm._id)' style='padding-left:5px;')
