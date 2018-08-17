@@ -100,6 +100,11 @@ function pgmemoEvent(socket) {
         console.log('del');
         mongoMain.deletebyId(pgmemoColName, delID);
     });
+    socket.on('pgmemoSelCheck', function(selector){
+        console.log('selector', selector);
+        selector.tag = tagBreak(selector.tag);
+        mongoMain.selRead(pgmemoColName, PGMEMOINFO.recentMemoNum, selector);
+    });
 };
 
 

@@ -185,7 +185,10 @@ app.controller('pgmemoCont', function($scope, socket){
   */
   pgmemoRecently($scope, socket);
 
-
+  /*
+   mew
+  */
+  pgmemoView($scope, socket);
 });
 
 

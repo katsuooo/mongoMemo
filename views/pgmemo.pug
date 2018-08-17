@@ -13,6 +13,7 @@ html(ng-app='pgmemoApp')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js')
     script(src='./javascripts/pgmemoRecently.js')      
+    script(src='./javascripts/pgmemoView.js')     
     script(src='./javascripts/pgmemo.js')  
     script(src='./javascripts/services.js')   
   body
@@ -22,10 +23,18 @@ html(ng-app='pgmemoApp')
         .col-sm-3.bg-default
           h3 recent 20
           include pgmemoRecent
-        .col-sm-9.bg-warning
-          include pgmemoInput
-          br
-          br
-          span {{typeSelection}} {{platformSelection}}
+        .col-sm-9
+          .bg-warning
+            include pgmemoInput
+            br
+            br
+            hr
+          .bg-info
+            include pgmemoViewSel
+            br
+            br
+          .bg-none
+            include pgmemoView
+            br
 
 

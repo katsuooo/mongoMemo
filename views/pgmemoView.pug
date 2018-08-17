@@ -1,0 +1,14 @@
+div(ng-repeat='pgm in pgmemoSels')
+  div
+    span {{pgm.date}}  
+  div
+    span {{pgm.title}}
+  span.badge.badge-pill.badge-success(ng-repeat='type in pgm.type') {{type}}  
+  span.badge.badge-pill.badge-primary(ng-repeat='platform in pgm.platform') {{platform}}
+  span.badge.badge-pill.badge-danger(ng-repeat='tag in pgm.tag') {{tag}}
+  div
+    span {{pgm.text}}
+  //span {{pgmemo._id}}
+  span.oi.oi-aperture(title='aperture' aria-hidden='true' ng-click='pgHen(pgm)')
+  span.oi.oi-trash(title='trash' aria-hidden='true' ng-click='pgDelete(pgm._id)' style='padding-left:5px;')
+  hr

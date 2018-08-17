@@ -1,0 +1,20 @@
+h2 my memo view
+form
+  h5 pgtype
+  .form-group.form-check
+    .my-form-inline(ng-repeat='typeName in info.type')
+      input.form-check-input(type='checkbox' id='pgtype' name='selectionType' value='{{typeName}}' ng-checked='pgmemoView.type.indexOf(typeName) > -1' ng-click='toggleTypeView(typeName)')
+      label.form-check-label(for='pgtype') {{typeName}}
+  //br
+  h5 pgplatform
+  .form-group.form-check
+    .my-form-inline(ng-repeat='platformName in info.platform')
+      input.form-check-input(type='checkbox' id='pgplatform' name='selectionType' value='{{platformName}}' ng-checked='pgmemoView.platform.indexOf(platformName) > -1' ng-click='togglePlatformView(platformName)')
+      label.form-check-label(for='pgplatform') {{platformName}}
+  //br
+  .form-group
+    label(for='tags')
+      h5 tags
+        input.form-control(type='text' id='tags' placeholder='tags' ng-model='pgmemoView.tag' ng-change='pgmemoTagChange()')
+    br
+pre {{pgmemoView}}

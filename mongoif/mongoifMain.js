@@ -42,6 +42,15 @@ import memo interfaces
 
 
 /*
+ deepcopy
+*/
+var myDeep = function(motoObj){
+    return JSON.parse(JSON.stringify(motoObj));
+}
+
+
+
+/*
 セカンドリードリミット
 write, delete後にデータをリードする。
 データ数１０
@@ -62,8 +71,28 @@ const mongo2ndRead = function(collection, client){
    });    
 }
 
+/*
+ セレクタjson配列をつくる
+*/
+var genSelHai = function(selector){
+    var hai = [];
+    selector.platform.forEach(function(element){
+       hai.push({platform: element});
+    });
+    selector.type.forEach(function(element){
+        hai.push({type: element});
+    });
+    selector.tag.forEach(function(element){
+        if(element !== ''){
+            hai.push({tag: element});
+        }
+    });
+    return myDeep(hai);
+}
 
-
+/*
+ mongodb driver interface 
+*/
 var mongoifMain = {
   /*
    write
@@ -163,7 +192,31 @@ var mongoifMain = {
             mongo2ndRead(collection, client);
         });
     });
-  }  
+  } ,
+  selRead :  function(colName, dnum, selector){    
+    var selHai = [];
+    selHai = genSelHai(selector);
+    console.log('selHai', selHai);
+    if (selHai.length === 0){
+        io.emit('pgmemoSelRead', '');
+        return;  
+    }
+    MongoClient.connect(MONGO_URL, {useNewUrlParser:true}, function(err, client) {
+        if(err){
+            return console.error(err);
+        }
+        const db = client.db(dbName);
+        const collection = db.collection(colName);
+        collection.find({$or: selHai}).sort({date:-1}).limit(dnum).toArray(function(err, docs) {
+            if (err) {
+                return console.error(err);
+            }
+            io.emit('pgmemoSelRead', docs);
+            client.close();
+        })
+    })
+  } 
+
 }
 
 module.exports = mongoifMain;

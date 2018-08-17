@@ -1,31 +1,27 @@
-h1 myMemo input
 h2 my memo input
 form
   .form-group
-    label(for='title')
-      h5 title
-      input.form-cotrol(type='text' id='title' placeholder='title' ng-model='pgmemo.title')
+    label(for='title') title
+    input.form-cotrol(type='text' id='title' placeholder='title' ng-model='pgmemo.title')
   //br
-  h5 pgtype
+  h6 pgtype
   .form-group.form-check
     .my-form-inline(ng-repeat='typeName in info.type')
       input.form-check-input(type='checkbox' id='pgtype' name='selectionType' value='{{typeName}}' ng-checked='pgmemo.type.indexOf(typeName) > -1' ng-click='toggleType(typeName)')
       label.form-check-label(for='pgtype') {{typeName}}
   //br
-  h5 pgplatform
+  h6 pgplatform
   .form-group.form-check
     .my-form-inline(ng-repeat='platformName in info.platform')
       input.form-check-input(type='checkbox' id='pgplatform' name='selectionType' value='{{platformName}}' ng-checked='pgmemo.platform.indexOf(platformName) > -1' ng-click='togglePlatform(platformName)')
       label.form-check-label(for='pgplatform') {{platformName}}
   //br
   .form-group
-    label(for='tags')
-      h5 tags
-      input.form-control(type='text' id='tags' placeholder='tags' ng-model='pgmemo.tag')
+    label(for='tags') tags
+    input.form-control(type='text' id='tags' placeholder='tags' ng-model='pgmemo.tag')
     br
-    label(for='memotextarea')
-      h5 text
-      textarea.form-control(type='text' id='memotextarea' placeholder='memo' rows='10' area-label='textarea' area-describedby='basic-textarea' ng-model='pgmemo.text')
+    label(for='memotextarea') text
+    textarea.form-control(type='text' id='memotextarea' placeholder='memo' rows='10' area-label='textarea' area-describedby='basic-textarea' ng-model='pgmemo.text')
   .form-group
     button.btn.btn-sm.btn-outline-success(ng-click='inputOn()') save
 pre {{pgmemo}}
