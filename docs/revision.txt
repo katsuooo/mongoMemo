@@ -4,3 +4,7 @@ rev101
 simpleBs4ページをつくったところからスタート
 simpleBs4をすすめる。
 package.json version1.01にする。
+...
+ページ追加できたのでrev101をmasterにマージする。
+git checkout master
+git merge rev101
