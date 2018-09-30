@@ -1,0 +1,6 @@
+180930
+バージョンつくる
+rev101
+simpleBs4ページをつくったところからスタート
+simpleBs4をすすめる。
+package.json version1.01にする。
