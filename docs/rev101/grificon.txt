@@ -1,0 +1,26 @@
+180930
+グリフィコンの変更
+
+font-awesomeでいけるかな。
+<link rel='stylesheet' href='https://use.fontawesome.com/release/v5.3.1/css/all.
+長すぎなのでコピーする。
+
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+テストする。
+でた。
+無料版をつかっているつもり。
+        <i class="fas fa-edit"></i>
+        <i class="fas fa-trash-alt"></i>
+
+		item2 += '<span class="glyphicon glyphicon-remove-circle" aria-hidden="true" style="float:right;"> </span>';
+		item2 += '<span class="glyphicon glyphicon-record" aria-hidden="true" style="float:right;margin-right:15px;"> </span>';
+
+
+		item2 += '<span class="fas fa-trash-alt" aria-hidden="true" style="float:right;"> </span>';
+		item2 += '<span class="fas fa-edit" aria-hidden="true" style="float:right;margin-right:15px;"> </span>';
+でいけた。
+アイコンは解決したが、エディット時に
+idとか変えてないけど、エラーになる。

@@ -1,0 +1,5 @@
+.card {
+    margin-top: 2px;
+}
+#datainBs4 { background: rgba(211, 221, 221, 0.932); padding: 3px; width: 100%; }
+#datainBs4 input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }

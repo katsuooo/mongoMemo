@@ -1,0 +1,41 @@
+180930
+hqtest3 >>> simpleBs4
+bootstrap4版にする。
+
+cdn変更
+panelがきいていない
+メモの時刻部が裸
+
+panelが廃止されcardになってる
+time部分のみcardにする
+本文のtextareaは編集があるのでそのままにする。
+js
+hqtest3.js >>> simpleBs4.jsにコピー
+message_listに追加するitem2テキスト編集部をcardに変更。
+色は？
+
+<div class='card border-primary'>
+        <div class='card-body text-primary'>
+                time 00:00:00
+        </div>
+</div>
+で色がつく。種類は
+primary, secondary, success, danger, warning,
+info, light, dark
+8種に増えてる。
+
+			case 0:
+				item2 = '<div class="card border-primary">';
+				item2 += '<div class="card-body text-primary">'+doc.date;
+				break;
+な感じで色の切り替え（外枠、時刻テキスト色）の切り替えができた。
+グリフィコンもなくなってる。
+別テキストに書く。
+
+
+class cardのno='dummy'を残しておかないと、このdummyにidを彫り込んでた。
+編集時にエラー。
+
+jqのclick event内でid,time,textデータを読み取ってるが、アイコンから要素をたどって
+値を取得している
+panelがcardにかわったので、このパスの指示テキストを変更した。

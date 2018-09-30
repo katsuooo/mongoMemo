@@ -1,0 +1,13 @@
+180930
+bs4なのでoutlineボタンにする。
+
+btn-outline-xxxx
+
+blockにする
+btn-block
+
+css
+datain >>> datainBs4
+に変更
+simpleBs4.cssに追加
+input blockの背景を変更した。
