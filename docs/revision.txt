@@ -10,4 +10,14 @@ git checkout master
 git merge rev101
 
 rev102
+mongo dumperをつくる
+simple memoを日付つきで１ファイル化
+別のdbに１テキストとして保存。
+simple memoをクリア
 
+pgmemoは？
+１タグごとに集計。
+全データ。
+タグわけしたデータをｄｂに保存。
+もとの全タグはテキストに含めるか。
+あーどうする？？？
