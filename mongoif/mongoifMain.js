@@ -123,23 +123,24 @@ var mongoifMain = {
   /*
    read limit
   */
-  /* 
-  readLimit : function(colName, dnum){
-    MongoClient.connect(MONGO_URL, function(err, client) {
+  readAll : function(colName){
+    MongoClient.connect(MONGO_URL, {useNewUrlParser:true}, function(err, client) {
         if(err){
             return console.error(err);
         }
         const db = client.db(dbName);
         const collection = db.collection(colName);
-        collection.find({}).sort({date:-1}).limit(dnum).toArray(function(err, docs) {
+        collection.find({}).sort({date:-1}).toArray(function(err, docs) {
             if (err) {
                 return console.error(err);
             }
-            io.emit('pgmemoReadLimit', docs);
+            io.emit('dailysGet', docs);
             client.close();
         })
     })
-  }
+  },
+  /*
+   read limit
   */
   readLimit : function(colName, dnum){
     MongoClient.connect(MONGO_URL, {useNewUrlParser:true}, function(err, client) {

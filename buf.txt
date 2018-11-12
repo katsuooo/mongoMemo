@@ -1,42 +1,7 @@
-
-
-
-
-          h3 input
-          h4 title
-          label()
-            input()
-          h4 program {{typeSelection}}
-          label(ng-repeat='typeName in info.type')
-            input(
-              type='checkbox'
-              name='selectedType'
-              value='{{typeName}}'
-              ng-checked='typeSelection.indexOf(typeName) > -1'
-              ng-click='toggleType(typeName)'
-              ) 
-            span#cblabel {{typeName}}
-          h4 platform {{platformSelection}}
-          label(ng-repeat='platformName in info.platform')
-            input(
-              type='checkbox'
-              name='selectedPlatform'
-              value='{{platformName}}'
-              ng-checked='platformSelection.indexOf(platformName) > -1'
-              ng-click='togglePlatform(platformName)'
-              ) 
-            span#cblabel {{platformName}}
-          h4 tags {{pgmemoTag}}
-          .input-group
-            label()
-            input.form-control(
-              type='text'
-              aria-label='pgmemoTag'
-              value='{{pgmemoTag}}'
-              ) 
-          h4 text {{pgmemoText}}
-          .input-group
-            //.input-group-prepend
-            //  span.input-gropu-text#basic-textarea テキストエリア付き
-            textarea.form-control(area-label='textarea' area-describedby='basic-textarea' rows='10') {{pgmemoText}}
-          br
+<title>ng-click directive</title>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js'></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('mainCtrl', ['$scope', function($scope){
+ console.log('angularjs(1) base');
+}]);

@@ -7,7 +7,7 @@
 
 var memoEvent = require('./events/memoEvent');
 var pgmemoEvent = require('./events/pgmemoEvent');
-
+var dailyViewEvent = require('./events/dailyViewEvent');
 
 
 
@@ -26,6 +26,10 @@ function socketManager(server){
       });
       */
       pgmemoEvent(socket);
+      /*
+       daily view event
+      */
+      dailyViewEvent(socket);
     });
 }
 
