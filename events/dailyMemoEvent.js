@@ -8,21 +8,32 @@ var mongoMain = require('../mongoif/mongoifMain');
  mongo interface
 */
 
-const colName = 'text';
+const colName = 'daily';
 const writeColName = 'daily';
+var readNum = 20;
 
+/*
+ read daily
+*/
+function readDaily(){
+    mongoMain.readLimitDaily(colName, readNum);
+}
+/*
+ exports
+*/
 function dailyMemoEvent(socket) {
     /*
      dbname set
     */
     socket.on('dailyMemoStart', function(){
-        console.log('daily start');
-        mongoMain.readAll(colName);
+        console.log('daily memo start');
+        readDaily();
     });
-    socket.on('saveMemoDailys', function(docs){
+    socket.on('nextDaily', function(docs){
         console.log('dailys save', docs);
         //mongoMain.readLimit(pgmemoColName, PGMEMOINFO.recentMemoNum);
-        mongoMain.saveDailys(writeColName, docs)
+        readNum += 20;
+        readDaily();
     });
 }
 

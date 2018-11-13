@@ -30,7 +30,8 @@ function dailyViewEvent(socket) {
     socket.on('saveDailys', function(docs){
         console.log('dailys save', docs);
         //mongoMain.readLimit(pgmemoColName, PGMEMOINFO.recentMemoNum);
-        mongoMain.saveDailys(writeColName, docs)
+        mongoMain.saveDailys(writeColName, docs);
+        mongoMain.deleteAll(colName);
     });
 }
 

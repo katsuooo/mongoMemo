@@ -90,8 +90,34 @@ var genSelHai = function(selector){
 }
 
 /*
- mongodb driver interface 
+ simpleMemo drop()後の再読み込み 
 */
+/*
+const readAfterSimpleDrop = function(collection, client){
+    var dnum = CONFIG.pgmemo.recentMemoNum;
+    collection.find({}).sort({date:-1}).limit(dnum).toArray(function(err, docs) {
+        if (err) {
+            return console.error(err);
+        }
+        client.close();
+        console.log('read after write');
+        
+        // clientにsocketioデータを送る
+        
+        io.emit('pgmemoReadLimit', docs);
+    });    
+}
+*/
+
+
+
+
+
+/*
+
+ mongodb driver interface 
+
+ */
 var mongoifMain = {
   /*
    write
@@ -120,7 +146,7 @@ var mongoifMain = {
     });
   },
   /*
-   read limit
+   read all (from daily view)
   */
   readAll : function(colName){
     MongoClient.connect(MONGO_URL, {useNewUrlParser:true}, function(err, client) {
@@ -134,6 +160,25 @@ var mongoifMain = {
                 return console.error(err);
             }
             io.emit('dailysGet', docs);
+            client.close();
+        })
+    })
+  },
+  /*
+   read all from daily memo
+  */
+  readLimitDaily : function(colName, dnum){
+    MongoClient.connect(MONGO_URL, {useNewUrlParser:true}, function(err, client) {
+        if(err){
+            return console.error(err);
+        }
+        const db = client.db(dbName);
+        const collection = db.collection(colName);
+        collection.find({}).sort({date:-1}).limit(dnum).toArray(function(err, docs) {
+            if (err) {
+                return console.error(err);
+            }
+            io.emit('dailyMemoGet', docs);
             client.close();
         })
     })
@@ -237,7 +282,30 @@ var mongoifMain = {
             console.log('just inserted ', jnum, ' new documents!');
         })
     });
-  }
+  },
+  /*
+   deleat all
+  */
+  deleteAll: (colName) => {
+    console.log('delete All');
+    MongoClient.connect(MONGO_URL, {useNewUrlParser:true}, function(err, client) {
+        if(err){
+            return console.error(err);
+        }
+        const db = client.db(dbName);
+        const collection = db.collection(colName);
+        collection.drop( function(err, delOK) {
+            if (delOK) {
+                //return console.error(err);
+                console.log('ok delete');
+                //readAfterSimpleDrop(collection, client);
+                this.readAll(colName);
+            }else{
+                client.close();
+            }
+        })
+    })
+  },
 }
 
 module.exports = mongoifMain;

@@ -117,7 +117,7 @@ socket.on('dailyMemoGet',function(docs){
 	var item2;
 	var count = 0;
 	$('#message_list').empty();
-	daysDocView.forEach(function(doc){
+	docs.forEach(function(doc){
 		//primary, secondary, success, danger, warning,
 		//info, light, dark
 		switch(count++%8){
@@ -154,9 +154,8 @@ socket.on('dailyMemoGet',function(docs){
 				item2 += '<div class="card-body text-dark" no="dummy">'+doc.day;
 				break;
 		}
-		//item2 += '<div class="card-body" no="dummy">'+doc.date;
-		//item2 += '<span class="fas fa-trash-alt" aria-hidden="true" style="float:right;"> </span>';
-		//item2 += '<span class="fas fa-edit" aria-hidden="true" style="float:right;margin-right:15px;"> </span>';
+		item2 += '<span class="fas fa-trash-alt" aria-hidden="true" style="float:right;"> </span>';
+		item2 += '<span class="fas fa-edit" aria-hidden="true" style="float:right;margin-right:15px;"> </span>';
 		item2 += '</div>';
     	item2 += '<textarea class="panel-body animated" rows="8">'+doc.text+'</textarea></div>';
     	item2 = item2.replace('dummy', doc._id);
@@ -186,9 +185,7 @@ $(document).ready(function(){
 			var lid = $(this).closest('.card-body').attr('no');
 			var ltext = $(this).closest('.card-body').closest('.card').children('.panel-body').val();
 			var ldate = $(this).closest('.card-body').text();
-			console.log('ltext:',ltext);
 			var json = {id:lid, text:ltext, date:ldate};
-			console.log('update-yes:', json);
 			socket.emit('memoupdate', json);
 		}else{
 			console.log('update-no');
@@ -196,20 +193,17 @@ $(document).ready(function(){
 	});
 	$(document).on('click', '.fa-trash-alt', function(){
 		if(confirm('deleat this record?')){
-			//var id = $(this).closest('.panel-heading').attr('no');
 			var id = $(this).closest('.card-body').attr('no');
-			console.log('deleat-yes:', id);
 			socket.emit('memodelete', id);
 		}else{
 			console.log('deleat-no');
 		}
 	});
-	/*
+	
 	$('#nextbtn').click(function(){
-			socket.emit('next');
+		console.log('next20');
+		socket.emit('nextDaily');
 	});
-	*/
-	$('#savebtn').click(function(){
-		socket.emit('saveDailys', daysDoc);
-	});
+	
+
 });
