@@ -19,7 +19,6 @@ var yaml = require('js-yaml');
 var config = {};
 try {
   config= yaml.safeLoad(fs.readFileSync('./config/memoConfig.yaml'));
-
 }catch (e) {
   console.log(e);
 }
@@ -216,8 +215,29 @@ var mongoifMain = {
             client.close();
         })
     })
-  } 
-
+  } ,
+  /*
+   daily dataの保存
+  */
+  saveDailys : (col, json) => {
+    MongoClient.connect(MONGO_URL, {useNewUrlParser:true}, function(err, client) {
+        if(err){
+            return console.error(err);
+        }
+        const db = client.db(dbName);
+        const collection = db.collection(col);
+        collection.insert(json, function(err, docs){
+            if (err) {
+                return console.error(err);
+            }
+            /*
+            json 要素数
+            */
+            var jnum = Object.keys(docs).length;
+            console.log('just inserted ', jnum, ' new documents!');
+        })
+    });
+  }
 }
 
 module.exports = mongoifMain;

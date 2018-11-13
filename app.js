@@ -10,6 +10,7 @@ var hqtest3 = require('./routes/hqtest3');
 var pgmemo = require('./routes/pgmemo');
 var simpleBs4 = require('./routes/simpleBs4');
 var dailyView = require('./routes/dailyView');
+var dailyMemo = require('./routes/dailyMemo');
 
 var app = express();
 
@@ -30,6 +31,7 @@ app.use('/hqtest3', hqtest3);
 app.use('/pgmemo', pgmemo);
 app.use('/simpleBs4', simpleBs4);
 app.use('/dailyView', dailyView);
+app.use('/dailyMemo', dailyMemo);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -8,7 +8,7 @@
 var memoEvent = require('./events/memoEvent');
 var pgmemoEvent = require('./events/pgmemoEvent');
 var dailyViewEvent = require('./events/dailyViewEvent');
-
+var dailyMemoEvent = require('./events/dailyMemoEvent');
 
 
 function socketManager(server){
@@ -30,6 +30,10 @@ function socketManager(server){
        daily view event
       */
       dailyViewEvent(socket);
+      /*
+       daily memo event
+      */
+      dailyMemoEvent(socket);
     });
 }
 

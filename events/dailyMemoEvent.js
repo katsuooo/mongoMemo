@@ -1,16 +1,8 @@
 /*
- daily view event
+ daily memo event
+ view mongo.myMemo/daily monitor
 */
-
 var mongoMain = require('../mongoif/mongoifMain');
-
-
-
-
-
-
-
-
 
 /*
  mongo interface
@@ -19,23 +11,19 @@ var mongoMain = require('../mongoif/mongoifMain');
 const colName = 'text';
 const writeColName = 'daily';
 
-function dailyViewEvent(socket) {
+function dailyMemoEvent(socket) {
     /*
      dbname set
     */
-    socket.on('dailyStart', function(){
+    socket.on('dailyMemoStart', function(){
         console.log('daily start');
         mongoMain.readAll(colName);
     });
-    socket.on('saveDailys', function(docs){
+    socket.on('saveMemoDailys', function(docs){
         console.log('dailys save', docs);
         //mongoMain.readLimit(pgmemoColName, PGMEMOINFO.recentMemoNum);
         mongoMain.saveDailys(writeColName, docs)
     });
 }
 
-module.exports = dailyViewEvent;
-
-
-
-
+module.exports = dailyMemoEvent;
