@@ -275,11 +275,12 @@ var mongoifMain = {
             if (err) {
                 return console.error(err);
             }
+            console.log('save ok', docs);
             /*
             json 要素数
             */
-            var jnum = Object.keys(docs).length;
-            console.log('just inserted ', jnum, ' new documents!');
+            //var jnum = Object.keys(docs).length;
+            //console.log('just inserted ', jnum, ' new documents!');
         })
     });
   },
@@ -299,13 +300,15 @@ var mongoifMain = {
                 //return console.error(err);
                 console.log('ok delete');
                 //readAfterSimpleDrop(collection, client);
-                this.readAll(colName);
+                //this.readAll(colName);
+                //console.log('type', typeof(mongoifMain.readAll));
+                mongoifMain.readAll(colName);
             }else{
                 client.close();
             }
         })
     })
-  },
+  }
 }
 
 module.exports = mongoifMain;

@@ -3,6 +3,7 @@
 */
 
 var mongoMain = require('../mongoif/mongoifMain');
+var mongoAsync = require('../mongoif/mongoAsync.js');
 
 
 
@@ -29,7 +30,7 @@ function dailyViewEvent(socket) {
     });
     socket.on('saveDailys', function(docs){
         console.log('dailys save', docs);
-        //mongoMain.readLimit(pgmemoColName, PGMEMOINFO.recentMemoNum);
+        mongoAsync.getLatestDay();
         mongoMain.saveDailys(writeColName, docs);
         mongoMain.deleteAll(colName);
     });

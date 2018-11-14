@@ -12,7 +12,7 @@
 #
 # mongodb info
 #
-mongodb : 
+mongodb: 
   url: mongodb://192.168.10.132
   port: 27017
   db: myMemo

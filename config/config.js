@@ -13,6 +13,7 @@ var yaml = require('js-yaml');
 var CONFIG = ''
 try {
   CONFIG = yaml.safeLoad(fs.readFileSync('./config/memoConfig.yaml'));
+  //CONFIG = yaml.safeLoad(fs.readFileSync('../../config/memoConfig.yaml'));
 }catch (e) {
   console.log(e);
 }
