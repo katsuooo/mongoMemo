@@ -10,5 +10,5 @@
 
 var mongoifAsync = require('../../mongoif/mongoIfAsync');
 
-
-mongoifAsync.getLatestDay();
+var colName = 'daily'
+mongoifAsync.getLatestDay(colName);

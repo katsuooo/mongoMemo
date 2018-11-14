@@ -4,11 +4,11 @@
 
 var mongodb = require('mongodb'), MongoClient = mongodb.MongoClient;
 var fs = require('fs');
-var CONFIG = require('../config/config');
-console.log(CONFIG);
+var CONFIG = require('../config/config').CONFIG;
+
 const MONGO_URL = CONFIG.mongodb.url + ':' + CONFIG.mongodb.port;
 const dbName = CONFIG.mongodb.db;
-const collectionName = CONFIG.mongodb.collection.pgmemo
+//const collectionName = CONFIG.mongodb.collection.pgmemo
 
 /*
  connect
@@ -53,7 +53,6 @@ var showDbAndCollection = async() => {
  param  : socket, socketioオブジェクト
 */
 var getDbAndCollection = async(socket) => {
-//var getDbAndCollection = function(){
     const client = await mongodb.MongoClient.connect(MONGO_URL, {useNewUrlParser:true});
     const db = await client.db('test');
     var adminDb = db.admin();
@@ -82,8 +81,15 @@ var getDbAndCollection = async(socket) => {
 /*
  daily から最新の日付を取得する
 */
-function getLatestDay(){
-
+async function getLatestDay(colName){
+    console.log('xxx');
+    const client = await mongodb.MongoClient.connect(MONGO_URL, {useNewUrlParser:true});
+    const db = await client.db(dbName);
+    const collection = await db.collection(colName);
+    const d = await collection.find({}).sort({day:-1}).limit(1).toArray();
+    client.close();
+    const latestDay = d[0].day;
+    console.log(latestDay);
 }
 /*
  async mongo interface 
@@ -107,11 +113,10 @@ var mongoIfAsync = {
     /*
      dailyから最新のdayを取得する。
     */
-    getLatestDay: () => {
-        getLatestDay();
+    getLatestDay: (colName) => {
+        getLatestDay(colName);
     }
 };
 
-//mongoIfAsync.showDbAndCollection();
 
 module.exports = mongoIfAsync;
