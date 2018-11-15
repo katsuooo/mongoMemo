@@ -174,10 +174,12 @@ var mongoifMain = {
         }
         const db = client.db(dbName);
         const collection = db.collection(colName);
-        collection.find({}).sort({date:-1}).limit(dnum).toArray(function(err, docs) {
+        //const readNum = 100;
+        collection.find({}).sort({day:-1}).limit(dnum).toArray(function(err, docs) {
             if (err) {
                 return console.error(err);
             }
+            //const retDocs = docs.slice(0, dnum);
             io.emit('dailyMemoGet', docs);
             client.close();
         })
@@ -220,14 +222,17 @@ var mongoifMain = {
     })
   },
   update :  function(colName, json){
-    var objectid = new mongodb.ObjectID.createFromHexString(json._id);
+    console.log('a', colName, json);
+    //var objectid = new mongodb.ObjectID.createFromHexString(json._id);
     //var objectid = json._id;
+    var objectid = new mongodb.ObjectID(json._id);
     MongoClient.connect(MONGO_URL, {useNewUrlParser:true}, function(err, client) {
         if(err){
             return console.error(err);
         }
         const db = client.db(dbName);
-        const collection = db.collection(collectionName);
+        //const collection = db.collection(collectionName);
+        const collection = db.collection(colName);
         //collection.update({_id: objectid}, {text: json.text, date: json.date},function(err, result) {
         delete json._id;
         collection.update({_id: objectid}, json, function(err, result) {

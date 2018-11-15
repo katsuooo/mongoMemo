@@ -3,7 +3,7 @@
  view mongo.myMemo/daily monitor
 */
 var mongoMain = require('../mongoif/mongoifMain');
-
+var mongoAsync = require('../mongoif/mongoIfAsync');
 /*
  mongo interface
 */
@@ -35,6 +35,20 @@ function dailyMemoEvent(socket) {
         readNum += 20;
         readDaily();
     });
+    /*
+     edit icon
+    */
+    socket.on( 'dailyupdate', (json) => {
+        mongoAsync.update(colName, json);
+    });
+    /*
+     delete icon
+    */
+    socket.on( 'dailydelete', (id) => {
+        mongoAsync.deletebyId(colName, id);
+    });
+
+    
 }
 
 module.exports = dailyMemoEvent;

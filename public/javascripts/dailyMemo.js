@@ -186,7 +186,7 @@ $(document).ready(function(){
 			var ltext = $(this).closest('.card-body').closest('.card').children('.panel-body').val();
 			var ldate = $(this).closest('.card-body').text();
 			var json = {id:lid, text:ltext, date:ldate};
-			socket.emit('memoupdate', json);
+			socket.emit('dailyupdate', json);
 		}else{
 			console.log('update-no');
 		}
@@ -194,7 +194,7 @@ $(document).ready(function(){
 	$(document).on('click', '.fa-trash-alt', function(){
 		if(confirm('deleat this record?')){
 			var id = $(this).closest('.card-body').attr('no');
-			socket.emit('memodelete', id);
+			socket.emit('dailydelete', id);
 		}else{
 			console.log('deleat-no');
 		}

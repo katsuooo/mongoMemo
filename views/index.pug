@@ -6,6 +6,14 @@ block content
   p database
   p mongodb 192.168.10.132:27017
   p db:myMemo
+  p collection:daily
+  p page: ./dailyMemo
+  form(action='./dailyMemo')
+    input(type='submit' value='daily memo')
+  br
+  p database
+  p mongodb 192.168.10.132:27017
+  p db:myMemo
   p collection:test(read)
   p collection:daily(write)
   p page: ./dailyView

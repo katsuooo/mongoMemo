@@ -30,9 +30,13 @@ function dailyViewEvent(socket) {
     });
     socket.on('saveDailys', function(docs){
         console.log('dailys save', docs);
-        mongoAsync.getLatestDay();
-        mongoMain.saveDailys(writeColName, docs);
-        mongoMain.deleteAll(colName);
+        //mongoAsync.getLatestDay();
+        //mongoMain.saveDailys(writeColName, docs);
+        //mongoMain.deleteAll(colName);
+        docs.forEach( (doc) => {
+            mongoAsync.addDayJson(writeColName, doc);
+        });
+        mongoMain.deleteAll(colName);   // simples all delete
     });
 }
 
