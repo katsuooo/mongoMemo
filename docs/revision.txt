@@ -1,3 +1,12 @@
+181116
+rev102ができたので、この編集後にpushしmasterにmargeする
+git add --all
+git commit -m "dailyMemo to rev102"
+git push origin rev102
+git checkout master
+git merge rev102
+
+
 181112
 rev102
 追加 simpleMemoをパースして、１日単位のデータにする。
