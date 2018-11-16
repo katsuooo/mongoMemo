@@ -183,22 +183,48 @@ async function addDayJson(colName, dayJson){
 /*
  daily update
 */
-async function dailyUpdate(colName, json){
-    console.log('update', json);
+async function dailyUpdate(colName, json, readNum){ 
     const objectid = new mongodb.ObjectID(json.id);
     delete json.id;
+    json._id = objectid;
     const client = await MongoClient.connect(MONGO_URL, {useNewUrlParser:true});
     const db = client.db(dbName);
     const collection = db.collection(colName);
-    const d = collection.update({_id: objectid}, json);
+    const d = await collection.save(json);
+    var docs = await collection.find({}).sort({day:-1}).limit(readNum).toArray();
+    client.close();
+    io.emit('dailyMemoGet', docs);
 }
 /*
  daily delete
 */
-async function dailyDelete(colName, id){
-
+async function dailyDelete(colName, id, readNum){
+    const idjson = {_id: new mongodb.ObjectID(id)};
+    const client = await MongoClient.connect(MONGO_URL, {useNewUrlParser:true});
+    const db = client.db(dbName);
+    const collection = db.collection(colName);
+    const d = await collection.deleteOne(idjson);
+    var docs = await collection.find({}).sort({day:-1}).limit(readNum).toArray();
+    client.close();
+    io.emit('dailyMemoGet', docs);
 }
-
+/*
+console.log('deleteOnebyid', delid);
+MongoClient.connect(MONGO_URL, {useNewUrlParser:true}, function(err, client) {
+    if(err){
+        return console.error(err);
+    }
+    const db = client.db(dbName);
+    const collection = db.collection(colName);
+    idjson = {_id: new mongodb.ObjectID(delid)};
+    collection.deleteOne(idjson, function(err, docs) {
+        if (err) {
+            return console.error(err);
+        }
+        mongo2ndRead(collection, client);
+    })
+})
+*/
 
 /*
  async mongo interface 
@@ -240,14 +266,14 @@ var mongoIfAsync = {
     /*
      daily 更新
     */
-    update: (colName, json) => {
-        dailyUpdate(colName, json);
+    update: (colName, json, readNum) => {
+        dailyUpdate(colName, json, readNum);
     },
     /*
      daily delete 
     */
-    deletebyId: (colName, id) => {
-        dailyDelete(colName, id);
+    deletebyId: (colName, id, readNum) => {
+        dailyDelete(colName, id, readNum);
     }
 };
 

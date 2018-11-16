@@ -184,8 +184,9 @@ $(document).ready(function(){
 		if(confirm('update this record?')){
 			var lid = $(this).closest('.card-body').attr('no');
 			var ltext = $(this).closest('.card-body').closest('.card').children('.panel-body').val();
-			var ldate = $(this).closest('.card-body').text();
-			var json = {id:lid, text:ltext, date:ldate};
+			var ldate = $(this).closest('.card-body').text().trim();
+			var json = {id:lid, text:ltext, day:ldate};
+			console.log(json);
 			socket.emit('dailyupdate', json);
 		}else{
 			console.log('update-no');

@@ -39,13 +39,13 @@ function dailyMemoEvent(socket) {
      edit icon
     */
     socket.on( 'dailyupdate', (json) => {
-        mongoAsync.update(colName, json);
+        mongoAsync.update(colName, json, readNum);
     });
     /*
      delete icon
     */
     socket.on( 'dailydelete', (id) => {
-        mongoAsync.deletebyId(colName, id);
+        mongoAsync.deletebyId(colName, id, readNum);
     });
 
     
