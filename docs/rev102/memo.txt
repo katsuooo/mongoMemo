@@ -1,0 +1,9 @@
+/*
+ henkou
+*/
+181118
+simpleBs4のtextarea縦を拡大
+dailyviewと同サイズ
+jsのtextareaタグ生成部に
+rows="8"
+を追加

@@ -87,7 +87,7 @@ socket.on('readall',function(docs){
 		item2 += '<span class="fas fa-trash-alt" aria-hidden="true" style="float:right;"> </span>';
 		item2 += '<span class="fas fa-edit" aria-hidden="true" style="float:right;margin-right:15px;"> </span>';
 		item2 += '</div>';
-    	item2 += '<textarea class="panel-body animated">'+doc.text+'</textarea></div>';
+    	item2 += '<textarea class="panel-body animated" rows="8">'+doc.text+'</textarea></div>';
     	item2 = item2.replace('dummy', doc._id);
 		$('#message_list').append(item2).hide().fadeIn(250);
 	});
