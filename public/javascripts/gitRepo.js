@@ -15,7 +15,7 @@ var liTag = "<li class='list-group-item'>rname</li>"
 */
 socket.on('gitRepoFiles', function(files){
     //console.log('socketon');
-    console.log(files);
+    //console.log(files);
     var newTag = '';
     files.forEach( (file) => {
         var x = liTag;
