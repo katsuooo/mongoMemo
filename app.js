@@ -11,6 +11,7 @@ var pgmemo = require('./routes/pgmemo');
 var simpleBs4 = require('./routes/simpleBs4');
 var dailyView = require('./routes/dailyView');
 var dailyMemo = require('./routes/dailyMemo');
+var gitRepos = require('./routes/gitRepos');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use('/pgmemo', pgmemo);
 app.use('/simpleBs4', simpleBs4);
 app.use('/dailyView', dailyView);
 app.use('/dailyMemo', dailyMemo);
+app.use('/gitRepos', gitRepos);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

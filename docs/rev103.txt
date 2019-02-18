@@ -1,0 +1,25 @@
+190217
+rev103
+~/gitRepo/の内容を表示する。
+
+const testFolder = './'
+const fs = require('fs');
+
+fs.readdir(testFolder, (err, files) => {
+  files.forEach(file => {
+    console.log(file);
+  });
+});
+
+
+たたいてみる。
+~/gitRepo/
+内容表示できるか？
+
+できない。というか、サーバじゃないからか。
+サーバでたたく。
+testFolderを~で指定するとエラー。/home/katsuooo/gitRepo/
+で書くとOK。
+
+page
+gitRepos
