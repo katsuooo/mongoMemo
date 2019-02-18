@@ -22,7 +22,7 @@ socket.on('gitRepoFiles', function(files){
         x = x.replace('rname', file);
         newTag += x;
     });
-    console.log('newTag', newTag);
+    //console.log('newTag', newTag);
     $('#gitrepoList').append(newTag);
 });
 
