@@ -1,22 +1,27 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
 	/*font: 13px Helvetica, Arial; */
-	font-size: 0.85rem;
+	font-size: 0.938rem;
 	/*
 	font-family: 'Noto Sans JP', sans-serif;
 	*/
-  font-family: 'Noto Sans TC', sans-serif;
+	/*font-family: 'Noto Sans TC', sans-serif;*/
+	
   /*
 	font-family: 'M PLUS 1p', sans-serif;
-font-family: 'Noto Sans SC', sans-serif;
-font-family: 'Sawarabi Mincho', sans-serif;
-font-family: 'Sawarabi Gothic', sans-serif;
 	*/
+  /*font-family: 'Noto Sans SC', sans-serif;*/
 	/*
-  font-family: 'Kosugi Maru', sans-serif;
-	font-family: 'M PLUS Rounded 1c', sans-serif;
-font-family: 'Kosugi', sans-serif;
+	font-family: 'Sawarabi Mincho', sans-serif;
   */
+  /*font-family: 'Sawarabi Gothic', sans-serif;*/
+	
+	/*
+  font-family: 'Kosugi Maru', sans-serif; */
+	/*font-family: 'M PLUS Rounded 1c', sans-serif;*/
+  
+	font-family: 'Kosugi', sans-serif;
+  
 }
 #datain { background: #000; padding: 3px; width: 100%; }
 #datain input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }

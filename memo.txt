@@ -1,3 +1,17 @@
+190425-2
+noto sans TC
+、。の位置が浮いてる。
+
+変える
+sawarabi gothick いいけどね。
+
+hqtest3.css
+kosugi / rem 0.938
+に変更
+
+
+
+
 190425
 font 変更
 google-font
