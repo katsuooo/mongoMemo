@@ -1,8 +1,26 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font: 13px Helvetica, Arial; }
+body { 
+	/*font: 13px Helvetica, Arial; */
+	font-size: 0.85rem;
+	/*
+	font-family: 'Noto Sans JP', sans-serif;
+	*/
+  font-family: 'Noto Sans TC', sans-serif;
+  /*
+	font-family: 'M PLUS 1p', sans-serif;
+font-family: 'Noto Sans SC', sans-serif;
+font-family: 'Sawarabi Mincho', sans-serif;
+font-family: 'Sawarabi Gothic', sans-serif;
+	*/
+	/*
+  font-family: 'Kosugi Maru', sans-serif;
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+font-family: 'Kosugi', sans-serif;
+  */
+}
 #datain { background: #000; padding: 3px; width: 100%; }
 #datain input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-//#datain button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+/*#datain button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }*/
 #messages { list-style-type: none; margin: 0; padding: 0; }
 #messages li { padding: 5px 10px; }
 #messages li:nth-child(odd) { background: #eee; }
@@ -14,10 +32,10 @@ textarea {width:100%;}
 	transition: height 0.2s;
 }
 #nextbtnbox{
-	//margin:auto;
+	/*margin:auto;*/
   text-align:center;
 }
 #nextbtn{
-	//margin:auto;
+	/*margin:auto;*/
   float:right;
 }
