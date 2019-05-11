@@ -1,3 +1,78 @@
+190511
+add 6 panel
+>>> fix info ,small 6 textarea
+data saved mongodb/
+
+rev 1.1.0
+git branch rev110
+
+git branch -r
+takanoMac-mini:mongoMemo taka$ git branch -r
+  origin/HEAD -> origin/master
+  origin/master
+  origin/rev101
+  origin/rev102
+  origin/rev103
+
+git branch rev110
+git checkout rev110
+git branch
+takanoMac-mini:mongoMemo taka$ git branch
+  master
+* rev110
+
+mongo_server 
+> show dbs
+Test         0.000GB
+admin        0.000GB
+ballots      0.000GB
+cho2016      0.000GB
+choubo       0.000GB
+config       0.000GB
+iaqPcsim     0.000GB
+iaqSim       0.005GB
+local        0.000GB
+myMemo       0.001GB
+mydb         0.000GB
+nobel_prize  0.000GB
+r6441c       0.000GB
+
+> use myMemo
+switched to db myMemo
+> show collections
+daily
+pgmemo
+test
+text
+upsertTest
+
+//------
+panel
+{
+    current:{
+        p1:{},...,p9:{}
+    },
+    /*
+     save data >>> readable
+    */
+    yyyymmdd:{
+
+    }
+}
+
+p1:{title:'', text: ['a','b','c']}
+text is string array per line
+
+view panel? bootstrap4
+
+
+
+
+
+
+
+
+
 180711
 pgmemo
 入力をつくる。

@@ -1,0 +1,21 @@
+190511
+rev110
+panel page
+
+data
+title:xxx
+text: [line1,line2,line3......]
+>>> connect (os.path.sep)python >>> js same function
+
+title >>> date?
+
+memo bs4 >>> jq
+use angularjs??
+
+card footer sample
+Last updated 3 mins ago
+
+color 8
+backquote, no bg 8+8=16
+
+
