@@ -29,7 +29,7 @@
   }
 }
 */
-/*
+
 @media (min-width: 34em) {
     .card-columns {
         -webkit-column-count: 2;
@@ -61,8 +61,17 @@
         column-count: 5;
     }
 }
-_
-*/
+
+@media (min-width: 99em) {
+    .card-columns {
+        -webkit-column-count: 6;
+        -moz-column-count: 6;
+        column-count: 6;
+    }
+}
+
+
+
 
 /*
 @media (min-width: 540px) {
@@ -97,6 +106,10 @@ _
     }
 }
 */
+
+
+
+/*
 @media (min-width: 540px) {
     .card-columns {
         -webkit-column-count: 2;
@@ -128,6 +141,9 @@ _
         column-count: 6;
     }
 }
+*/
+
+
 </style>
 
 
@@ -136,7 +152,7 @@ _
 
 </head>
 <body>
-<div class='container'>
+<div class='container-fluid'>
 
 
 
@@ -150,7 +166,7 @@ _
 
 
 <div class='card-columns'>
-  <div class="card text-white bg-secondary">
+  <div class="card text-white bg-primary">
     <div class="card-header">Header1</div>
     <div class="card-body">
       <h5 class="card-title">Primary card title</h5>
@@ -182,13 +198,6 @@ _
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
   </div>
-
-
-
-  
-
-
-<!--     -->
 <div class="card text-white bg-success">
     <div class="card-header">Header5</div>
     <div class="card-body">
@@ -203,11 +212,6 @@ _
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
   </div>
-
-
-
-
-
   <div class="card text-white bg-danger">
     <div class="card-header">Header7</div>
     <div class="card-body">
@@ -222,12 +226,6 @@ _
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
   </div>
-
-
-
-
-
-
   <div class="card text-white bg-warning">
     <div class="card-header">Header9</div>
     <div class="card-body">
@@ -242,11 +240,6 @@ _
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
   </div>
-
-
-
-
-
   <div class="card text-white bg-info">
     <div class="card-header">Header11</div>
     <div class="card-body">
@@ -262,11 +255,6 @@ _
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
   </div>
-
-
-
-
-
   <div class="card bg-light">
     <div class="card-header">Header13</div>
     <div class="card-body">
@@ -281,12 +269,6 @@ _
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
   </div>
-  
-  
-  
-  
-  
-  
   <div class="card text-white bg-dark">
     <div class="card-header">Header15</div>
     <div class="card-body">
@@ -301,12 +283,154 @@ _
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
   </div>
-
-
-
-
-
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class='card-group'>
+  <div class="card text-white bg-primary">
+    <div class="card-header">Header1</div>
+    <div class="card-body">
+      <h5 class="card-title">Primary card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+    <div class='card-footer'>last updated 3 mongth ago</div>
+  </div>
+
+  <div class="card border-primary">
+    <div class="card-header">Header2</div>
+    <div class="card-body text-primary">
+      <h5 class="card-title">Primary card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+
+  <div class="card text-white bg-secondary">
+    <div class="card-header">Header3</div>
+    <div class="card-body">
+      <h5 class="card-title">Secondary card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+
+  <div class="card border-secondary">
+    <div class="card-header">Header4</div>
+    <div class="card-body text-secondary">
+      <h5 class="card-title">Secondary card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+<div class="card text-white bg-success">
+    <div class="card-header">Header5</div>
+    <div class="card-body">
+      <h5 class="card-title">Success card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+  <div class="card border-success" style="max-width: 18rem;">
+    <div class="card-header">Header6</div>
+    <div class="card-body text-success">
+      <h5 class="card-title">Success card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+  <div class="card text-white bg-danger">
+    <div class="card-header">Header7</div>
+    <div class="card-body">
+      <h5 class="card-title">Danger card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+  <div class="card border-danger">
+    <div class="card-header">Header8</div>
+    <div class="card-body text-danger">
+      <h5 class="card-title">Danger card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+  <div class="card text-white bg-warning">
+    <div class="card-header">Header9</div>
+    <div class="card-body">
+      <h5 class="card-title">Warning card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+  <div class="card border-warning">
+    <div class="card-header">Header10</div>
+    <div class="card-body text-warning">
+      <h5 class="card-title">Warning card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+  <div class="card text-white bg-info">
+    <div class="card-header">Header11</div>
+    <div class="card-body">
+      <h5 class="card-title">Info card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+
+  <div class="card border-info">
+    <div class="card-header">Header12</div>
+    <div class="card-body text-info">
+      <h5 class="card-title">Info card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+  <div class="card bg-light">
+    <div class="card-header">Header13</div>
+    <div class="card-body">
+      <h5 class="card-title">Light card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+  <div class="card border-light">
+    <div class="card-header">Header14</div>
+    <div class="card-body">
+      <h5 class="card-title">Light card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+  <div class="card text-white bg-dark">
+    <div class="card-header">Header15</div>
+    <div class="card-body">
+      <h5 class="card-title">Dark card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+  <div class="card border-dark">
+    <div class="card-header">Header16</div>
+    <div class="card-body text-dark">
+      <h5 class="card-title">Dark card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
 
 
 
