@@ -3,6 +3,14 @@ extends layout
 block content
   h1 mongoMemo
   br
+  p memo panel
+  p mongodb 192.168.10.132:27017
+  p db:myMemo
+  p collection: panel
+  p page: ./panel
+  form(action='./panel')
+    input(type='submit' value='panel')
+  br
   p gitrepo directory
   p /home/katsu/gitRepo/
   p page: ./gitRepo

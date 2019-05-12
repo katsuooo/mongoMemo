@@ -12,6 +12,7 @@ var simpleBs4 = require('./routes/simpleBs4');
 var dailyView = require('./routes/dailyView');
 var dailyMemo = require('./routes/dailyMemo');
 var gitRepos = require('./routes/gitRepos');
+var panel = require('./routes/panel');
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use('/simpleBs4', simpleBs4);
 app.use('/dailyView', dailyView);
 app.use('/dailyMemo', dailyMemo);
 app.use('/gitRepos', gitRepos);
+app.use('/panel', panel);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

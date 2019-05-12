@@ -1,0 +1,30 @@
+doctype html
+html(ng-app='panelApp')
+  head
+    meta(charset='utf-8')
+    meta(name='veiwport' content='width=device-width initial-scale=1')
+    title panel
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css')
+    link(rel='stylesheet' href='./stylesheets/panel.css')
+  body
+    .container-fluid(ng-controller='panelCont')
+      h1 card panel
+      .card-columns
+        .card.text-white.bg-primary
+          .card-body
+            h5.card-title Nanka Title
+            text-area.card-text nanrakano text list
+          .card-gooter last update .....
+    script(src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous")
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js')
+    scirpt(src='./javascripts/panel.js')    
+    script(src='./javascripts/services.js')   
+
+
+
+
+
