@@ -1,55 +1,60 @@
 
+body{
+	font-family: 'Kosugi', sans-serif;
+}
+
 .card-body {
     /*padding:10px;*/
     padding: 0.9rem;
-  }
+}
   
   
   
-  @media (min-width: 34em) {
-      .card-columns {
-          -webkit-column-count: 2;
-          -moz-column-count: 2;
-          column-count: 2;
-      }
-  }
-  
-  @media (min-width: 48em) {
-      .card-columns {
-          -webkit-column-count: 3;
-          -moz-column-count: 3;
-          column-count: 3;
-      }
-  }
-  
-  @media (min-width: 62em) {
-      .card-columns {
-          -webkit-column-count: 4;
-          -moz-column-count: 4;
-          column-count: 4;
-      }
-  }
-  
-  @media (min-width: 75em) {
-      .card-columns {
-          -webkit-column-count: 5;
-          -moz-column-count: 5;
-          column-count: 5;
-      }
-  }
-  
-  @media (min-width: 99em) {
-      .card-columns {
-          -webkit-column-count: 6;
-          -moz-column-count: 6;
-          column-count: 6;
-      }
-  }
-  
-  
-  .card-footer{
+@media (min-width: 34em) {
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
+@media (min-width: 48em) {
+    .card-columns {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
+}  
+@media (min-width: 62em) {
+    .card-columns {
+        -webkit-column-count: 4;
+        -moz-column-count: 4;
+        column-count: 4;
+    }
+}
+@media (min-width: 75em) {
+    .card-columns {
+        -webkit-column-count: 5;
+        -moz-column-count: 5;
+        column-count: 5;
+    }
+}  
+@media (min-width: 99em) {
+    .card-columns {
+        -webkit-column-count: 6;
+        -moz-column-count: 6;
+        column-count: 6;
+    }
+}
+.card-footer{
     font-size: 0.8em;
+}  
+.text-gray{
     color: #808080;
     /*color: #c0c0c0;*/
-  }
+}
+  
+
+  
+
+
   

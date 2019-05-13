@@ -1,0 +1,19 @@
+mixin color(color)
+  .card.text-white(class!='bg-'+attributes.class)
+    .card-body
+      text-area.card-title Nanka Title
+      text-area.card-text nanrakano text list
+      //p.card-text honyahonya
+    .card-footer last update .....  
+  .card(class='border-'+attributes.class)
+    .card-body
+      text-area.card-title Nanka Title
+      text-area.card-text nanrakano text list
+      //p.card-text hony
+    .card-footer.text-gray last update .....  
+mixin cards(...colors)
+  each color in colors
+    +color(class=color)
+
+
++cards('primary','secondary','success','danger','warning','info','light','dark')

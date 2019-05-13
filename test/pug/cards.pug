@@ -1,0 +1,14 @@
+//- cards.pug
+
+mixin color(color)
+  .card.text-white&attributes(attributes)= color
+    .card-body
+      h5.card-title Nanka Title
+      text-area.card-text nanrakano text list
+    .card-footer last update .....  
+
+mixin cards(color)
+  +color(class=color)
+
+.card-columns
+  +cards('bg-primary')
