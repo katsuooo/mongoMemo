@@ -52,7 +52,15 @@ body{
     color: #808080;
     /*color: #c0c0c0;*/
 }
-  
+
+.card-body{
+    padding:0;
+    margin:0;
+}
+textarea{
+    margin:0;
+    padding:0;
+}
 
   
 

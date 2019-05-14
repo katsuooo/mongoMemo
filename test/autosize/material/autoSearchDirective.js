@@ -1,16 +1,3 @@
-<!doctype html>
-<html>
-<head>
-<meta charset='utf-8'>
-<meta name='viewport' content='width=device-width initial-scale=1'>
-<title>bs4 sample/cards</title>
-<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css'>
-<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js'></script>
-<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js'></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
-<script>
 (function () {
     'use strict';
 
@@ -87,19 +74,3 @@
     }
 
 })();
-
-</script>
-
-
-
-<style>
-
-</style>
-</head>
-<body>
-<div class='container-fluid'>
-<h1>panel image / bs4 4.2.1</h1>
-<hr>
-</div><!--container-->
-</body>
-</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html ng-app='myApp'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width initial-scale=1'>
+<title>bs4 sample/cards</title>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css'>
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+
+<script>
+var app = angular.module('myApp',[]);
+app.directive('resizeTextarea', function() {
+  return {
+    restrict: 'E',
+    transclude: true,
+    replace: true,
+    template: "<textarea style='overflow:hidden;' placeholder='入力してください'></textarea>",
+    link: function(scope, element, attrs) {
+      var HEIGHT = 25;
+      var el = angular.element(element[0])
+      el.css('lineHeight', HEIGHT + "px");
+      el.css('height', HEIGHT + "px");
+
+      var resize = function(e) {
+        var textHeight = e.target.scrollHeight;
+        var height = ~~(textHeight / HEIGHT) * HEIGHT
+        el.css('height', height + "px");
+      };
+      el.on('input', resize);
+    }
+  }
+});
+</script>
+
+<style>
+</style>
+</head>
+<body>
+        <div>
+                <resize-textarea></resize-textarea>
+        </div>
+</body>
+</html>
