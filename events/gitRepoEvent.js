@@ -20,6 +20,15 @@ case error
   path: '/home/katsu/gitRepo/' } undefined
 
 */
+function checkDir(path){
+    try{
+        return fs.lstatSync('/Users/taka').isDirectory();
+    } catch(e){
+        return false;
+    }
+}
+
+
 function readRepos(socket){
     /*
     const stats = fs.lstatSync('/Users/taka');
@@ -27,12 +36,44 @@ function readRepos(socket){
         testFolder = '/Users/taka/'
     }else if(stat
     */
+    /*
+    try{
+        const stats = fs.lstatSync('/Users/taka');
+        if(stats.isDirectory()){
+            testFolder = '/Users/taka/';
+        }
+    } catch(e){
+        try{
+            const stats = fs.lstatSync('/home/dingo');
+            if(stats.isDirectory()){
+                testFolder = '/home/dingo/';
+            }     
+        } catch(e){
+            try{
+                const stats = fs.lstatSync('/home/dingo');
+                if(stats.isDirectory()){
+                    testFolder = '/home/dingo/';
+                }     
+            } catch(e){
+                testFolder = '/home/';
+            }
+        }
+    }*/
+    /*
     if(fs.lstatSync('/Users/taka').isDirectory()){
         const testFolder = '/Users/taka/'  
     }else if(fs.lstatSync('/home/taka').isDirectory()){
         const testFolder = '/home/taka/gitRepo/'
     }else if(fs.lstatSync('/home/dingo').isDirectory()){
         const testFolder = '/home/taka/gitRepo/'
+    }
+    */
+    if(checkDir('/Users/taka')){
+        testFolder = '/Users/taka/';
+    }else if(checkDir('/home/dingo')){
+        testFolder = '/home/dingo/';
+    }else if(checkDir('/home/taka')){
+        testFOlder = '/home/taka/';
     }
     fs.readdir(testFolder, (err, files) => {
         /*
