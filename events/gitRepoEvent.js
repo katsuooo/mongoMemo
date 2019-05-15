@@ -68,12 +68,13 @@ function readRepos(socket){
         const testFolder = '/home/taka/gitRepo/'
     }
     */
+    let testFolder = '';
     if(checkDir('/Users/taka')){
-        const testFolder = '/Users/taka/';
+        testFolder = '/Users/taka/';
     }else if(checkDir('/home/dingo')){
-        const testFolder = '/home/dingo/gitRepo/';
+        testFolder = '/home/dingo/gitRepo/';
     }else if(checkDir('/home/taka')){
-        const testFolder = '/home/taka/gitRepo/';
+        testFolder = '/home/taka/gitRepo/';
     }
     fs.readdir(testFolder, (err, files) => {
         /*
