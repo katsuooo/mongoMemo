@@ -22,7 +22,7 @@ case error
 */
 function checkDir(path){
     try{
-        return fs.lstatSync('/Users/taka').isDirectory();
+        return fs.lstatSync(path).isDirectory();
     } catch(e){
         return false;
     }
@@ -69,11 +69,11 @@ function readRepos(socket){
     }
     */
     if(checkDir('/Users/taka')){
-        testFolder = '/Users/taka/';
+        const testFolder = '/Users/taka/';
     }else if(checkDir('/home/dingo')){
-        testFolder = '/home/dingo/';
+        const testFolder = '/home/dingo/';
     }else if(checkDir('/home/taka')){
-        testFOlder = '/home/taka/';
+        const testFOlder = '/home/taka/';
     }
     fs.readdir(testFolder, (err, files) => {
         /*
@@ -82,7 +82,7 @@ function readRepos(socket){
         });
         console.log(typeof(files));
         */
-        //console.log(err, files);
+        console.log(err, files);
         if (err != null){
             console.log(err);
         }
