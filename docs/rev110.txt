@@ -1,3 +1,17 @@
+190515
+panel text to mongo
+text changed trigger
+
+
+
+
+
+
+
+
+
+
+
 190511
 rev110
 panel page

@@ -18,7 +18,8 @@ html(ng-app='panelApp')
 
   body
     .container-fluid(ng-controller='panelCont')
-      h1 cards panel
+      h1(ng-click='click1()') cards panel
+      div {{panel[0].text}}
       .card-columns
         include panel_cards
 

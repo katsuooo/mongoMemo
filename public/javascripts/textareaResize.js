@@ -3,7 +3,7 @@ app.directive('resizeTextarea', function() {
       restrict: 'E',
       transclude: true,
       replace: true,
-      template: "<textarea style='overflow:hidden;' rows='5' placeholder='入力してください'></textarea>",
+      template: "<textarea style='overflow:hidden;'></textarea>",
       link: function(scope, element, attrs) {
         var HEIGHT = 25;
         var el = angular.element(element[0])

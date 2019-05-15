@@ -1,19 +1,22 @@
-mixin color(color)
+mixin colorx(index)
   .card.text-white(class!='bg-'+attributes.class)
     .card-body
       //text-area.card-title Nanka Title
-      resize-textarea.card-text.form-control.text-white(class!='bg-'+attributes.class rows='5')
+      resize-textarea.card-text.form-control.text-white(class!='bg-'+attributes.class rows='5' placeholder='panel-'+index ng-model='panela['+index+'].text') {{panela[index].text}}}
       //p.card-text honyahonya
     .card-footer last update .....  
   .card(class='border-'+attributes.class)
     .card-body
       //text-area.card-title Nanka Title
-      text-area.card-text(rows='5') nanrakano text list
+      //text-area.card-text(rows='5') nanrakano text list
+      resize-textarea.card-text.form-control(rows='5' placeholder='panel-'+index ng-model='panelb['+index+'].text') {{panelb[index].text}}}
       //p.card-text hony
     .card-footer.text-gray last update .....  
 mixin cards(...colors)
-  each color in colors
-    +color(class=color)
+  //each color, index in colors
+  //  +colorx(class=color, index)
+  -for(var i = 0; i<colors.length; i++)
+    +colorx(i)(class=colors[i])
 
 
 +cards('primary','secondary','success','danger','warning','info','light','dark')
