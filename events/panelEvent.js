@@ -9,6 +9,32 @@ var dateformat = require('dateformat');
 const panelColName = 'panel';
 
 /**
+ * mongo panel data
+ *  datetime: string
+ *  title     string
+ *  panel: string[16][]
+ * 
+ */
+var pnaelh = [];
+for (let i=0; i<16; i++){
+    var hai = [];
+    pnaelh.push(JSON.stringify(hai));
+}
+var paneld = {
+    datetime: '',
+    title: '',
+    panel: pnaelh
+}
+console.log(paneld);
+
+
+
+
+
+
+
+
+/**
  * panel mongo read
  * @param {*} socket 
  */
