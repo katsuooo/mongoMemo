@@ -2,7 +2,7 @@ mixin colorx(index)
   .card.text-white(class!='bg-'+attributes.class)
     .card-body
       //text-area.card-title Nanka Title
-      resize-textarea.card-text.form-control.text-white(class!='bg-'+attributes.class rows='5' placeholder='panel-'+index ng-model='panela['+index+'].text') {{panela[index].text}}}
+      resize-textarea.card-text.form-control.text-white(class!='bg-'+attributes.class rows='5' placeholder='panel-'+index ng-model='panela['+index+'].text' ng-change='textChange('+index+',"a")') {{panela[index].text}}}
       //p.card-text honyahonya
     .card-footer last update .....  
   .card(class='border-'+attributes.class)

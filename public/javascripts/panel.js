@@ -21,5 +21,22 @@ app.controller('panelCont', function($scope, socket){
         console.log('click1');
         $scope.panela[0].text = 'abc';
     }
+    socket.emit('panelStart');
+    socket.on('panelReadAll', (d) =>{
+        console.log('panel-read-all', d);
+    });
+    /*
+     textarea string change
+    */
+    $scope.textChange = ((index, label) => {
+        console.log(index, label, $scope.panela[index]['text'])
+        let textNo = index * 2;
+        let text = $scope.panela[index]['text'];
+        if (label === 'b'){
+            textNo += 1;
+            text = $scope.panelb[index]['text'];
+        }
+        socket.emit('textChange', {index: textNo, textarea: text});
+    });
 });
 
