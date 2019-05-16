@@ -41,6 +41,7 @@ socket.on('gitRepoFiles', (files)=>{
             colorNum = 0;
         }
         x = x.replace('fileName', file);
+        newTag += x;
     });
     $('#gitrepoInline').append(newTag);
 });
