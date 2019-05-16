@@ -37,7 +37,7 @@ socket.on('gitRepoFiles', (files)=>{
     files.forEach( (file)=>{
         var x = spanTag;
         x = x.replace('color',colors[colorNum++]);
-        if (colorNum === colors.length()){
+        if (colorNum === colors.length){
             colorNum = 0;
         }
         x = x.replace('fileName', file);
