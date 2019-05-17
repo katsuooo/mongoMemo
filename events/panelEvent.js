@@ -4,28 +4,13 @@ panel app event
 */
 var mongoMain = require('../mongoif/mongoifPanel');
 var dateformat = require('dateformat');
+var moment = require('moment');
 
 
 const panelColName = 'panel';
 
-/**
- * mongo panel data
- *  datetime: string
- *  title     string
- *  panel: string[16][]
- * 
- */
-var pnaelh = [];
-for (let i=0; i<16; i++){
-    var hai = [];
-    pnaelh.push(JSON.stringify(hai));
-}
-var paneld = {
-    datetime: '',
-    title: '',
-    panel: pnaelh
-}
-console.log(paneld);
+
+
 
 
 

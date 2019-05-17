@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@destinationstransfers/ntp": "^2.0.0",
+    "ntp-client": "^0.5.3"
+  }
+}

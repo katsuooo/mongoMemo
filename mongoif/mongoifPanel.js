@@ -6,10 +6,50 @@
 var mongodb = require('mongodb'), MongoClient = mongodb.MongoClient;
 var fs = require('fs');
 var CONFIG = require('../config/config').CONFIG;
+var moment = require('moment');
 
 const MONGO_URL = CONFIG.mongodb.url + ':' + CONFIG.mongodb.port;
 const dbName = CONFIG.mongodb.db;
 const colName = 'panel'
+
+
+/**
+ * mongo panel data
+ *  datetime: string
+ *  title     string
+ *  panel: string[16][]
+ * 
+ */
+var pnaelh = [];
+for (let i=0; i<16; i++){
+    var hai = [];
+    var datetime = moment();
+    var p_title = '';
+    pnaelh.push(JSON.stringify({p_title: p_title, datetime: datetime, text: hai}));
+}
+var nowtime = moment();
+nowtime = nowtime.format({formatWithDeviceTimezone: true});
+console.log(nowtime);
+var paneld = {
+    datetime: nowtime,
+    title: '',
+    panel: pnaelh
+}
+
+
+/**
+ * read mongo's check
+ * @param {json} d 
+ */
+function checkpd(d){
+    console.log(d);
+    if (('title' in d)&('datetime' in d)){
+        return true;
+    }
+    return false;
+}
+
+
 /**
  * read all
  * 
@@ -20,7 +60,10 @@ var readAll = async(colName, socket) => {
         client = await mongodb.MongoClient.connect(MONGO_URL, {useNewUrlParser:true});
         const db = await client.db(dbName);
         const collection = await db.collection(colName);
-        const d = await collection.find({}).toArray();
+        let d = await collection.find({}).toArray();
+        if(!checkpd(d)){
+            d = paneld;
+        }
         socket.emit('panelReadAll', d);
     }catch(error){
         console.log(error);

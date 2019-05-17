@@ -1,0 +1,14 @@
+190517
+
+ntp
+https://github.com/destinationstransfers/ntp
+
+ntp.nict.jp ‚àutc-0‚É‚È‚éB9h’x‚êB
+
+
+
+ntp-client
+https://www.npmjs.com/package/ntp-client
+
+
+
