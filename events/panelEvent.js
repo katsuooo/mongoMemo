@@ -30,8 +30,8 @@ function panelMongoRead(socket){
  * panel mongo text change
  * @param {'index': int, 'textarea': string}
  */
-function panelMongoTextChange(para){
-    //mongoMain
+function panelMongoTextChange(socket, para){
+    mongoMain.update(panelColName, socket, para);
 }
 
 /**
@@ -44,7 +44,7 @@ function panelEvent(socket){
     });
     socket.on('textChange', (para) => {
         console.log('textChange', para);
-        panelMongoTextChange(para);
+        panelMongoTextChange(socket, para);
     });
 }
 

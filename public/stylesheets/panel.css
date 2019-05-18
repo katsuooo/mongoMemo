@@ -61,6 +61,9 @@ textarea{
     margin:0;
     padding:0;
 }
+.straight{
+    white-space:nowrap;
+}
 
   
 

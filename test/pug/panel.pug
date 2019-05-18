@@ -18,10 +18,14 @@ html(ng-app='panelApp')
 
   body
     .container-fluid(ng-controller='panelCont')
+      h1(ng-click='click1()') cards panel
       div {{panel[0].text}}
       .card-columns
         include panel_cards
-      h1(ng-click='click1()') cards panel
+      div {{panela[0].datetime}}
+      div {{panela[0].text}}
+      p moji_test
+
 
 
 

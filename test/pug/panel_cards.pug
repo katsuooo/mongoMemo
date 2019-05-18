@@ -1,21 +1,22 @@
-mixin colorx(index)
+mixin colorx(indexx)
   .card.text-white(class!='bg-'+attributes.class)
     .card-body
       //text-area.card-title Nanka Title
-      resize-textarea.card-text.form-control.text-white(class!='bg-'+attributes.class placeholder='panel-'+index ng-model='panela['+index+'].text' ng-change='textChange('+index+',"a")')= '{{panela['+index+'].text}}'
+      resize-textarea.card-text.form-control.text-white(class!='bg-'+attributes.class placeholder='panel-'+index ng-model='panela['+indexx+'].text' ng-change='textChange('+indexx+',"a")') {{panela[=indexx].text}}
       //p.card-text honyahonya
+      pre  
     .card-footer 
-      span.straight last update&nbsp
-      span.straight= '{{panela['+index+'].datetime}}'
+      span last update
+      span.straight {{panela[indexx].datetime}}
   .card(class='border-'+attributes.class)
     .card-body
       //text-area.card-title Nanka Title
       //text-area.card-text(rows='5') nanrakano text list
-      resize-textarea.card-text.form-control(placeholder='panel-'+index ng-model='panelb['+index+'].text' ng-change='textChange('+index+',"b")')= '{{panelb['+index+'].text}}}'
+      resize-textarea.card-text.form-control(placeholder='panel-'+index ng-model='panelb['+indexx+'].text' ng-change='textChange('+indexx+',"b")') {{panelb[=indexx].text}}}
       //p.card-text hony
     .card-footer.text-gray
-      span.straight last update&npsp
-      span.straight= '{{panelb['+index+'].datetime}}'
+      span last update 
+      span.straight= '{{panelb['+indexx+'].datetime}}'
 mixin cards(...colors)
   each color, index in colors
     +colorx(index)(class=color)

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html ng-app="panelApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="veiwport" content="width=device-width initial-scale=1">
+    <title>angular_template</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css">
+    <link rel="stylesheet" href="./stylesheets/panel.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script src="./javascripts/panel.js"> </script>
+    <script src="./javascripts/textareaResize.js"> </script>
+    <script src="./javascripts/services.js">  </script>
+  </head>
+  <body>
+    <div class="container-fluid" ng-controller="panelCont">
+      <h1 ng-click="click1()">cards panel</h1>
+      <div>{{panel[0].text}}</div>
+      <div class="card-columns">
+                        <div class="card text-white bg-primary">
+                          <div class="card-body">
+                            <!--text-area.card-title Nanka Title-->
+                            <resize-textarea class="card-text form-control text-white bg-primary" placeholder="panel-undefined" ng-model="panela[0].text" ng-change="textChange(0,&quot;a&quot;)">{{panela[=indexx].text}}</resize-textarea>
+                            <!--p.card-text honyahonya-->
+                            <pre> </pre>
+                          </div>
+                          <div class="card-footer"> <span>last update</span><span class="straight">{{panela[indexx].datetime}}</span></div>
+                        </div>
+                        <div class="card border-primary">
+                          <div class="card-body">
+                            <!--text-area.card-title Nanka Title-->
+                            <!--text-area.card-text(rows='5') nanrakano text list-->
+                            <resize-textarea class="card-text form-control" placeholder="panel-undefined" ng-model="panelb[0].text" ng-change="textChange(0,&quot;b&quot;)">{{panelb[=indexx].text}}}</resize-textarea>
+                            <!--p.card-text hony-->
+                          </div>
+                          <div class="card-footer text-gray"><span>last update </span><span class="straight">{{panelb[0].datetime}}</span></div>
+                        </div>
+                        <div class="card text-white bg-secondary">
+                          <div class="card-body">
+                            <!--text-area.card-title Nanka Title-->
+                            <resize-textarea class="card-text form-control text-white bg-secondary" placeholder="panel-undefined" ng-model="panela[1].text" ng-change="textChange(1,&quot;a&quot;)">{{panela[=indexx].text}}</resize-textarea>
+                            <!--p.card-text honyahonya-->
+                            <pre> </pre>
+                          </div>
+                          <div class="card-footer"> <span>last update</span><span class="straight">{{panela[indexx].datetime}}</span></div>
+                        </div>
+                        <div class="card border-secondary">
+                          <div class="card-body">
+                            <!--text-area.card-title Nanka Title-->
+                            <!--text-area.card-text(rows='5') nanrakano text list-->
+                            <resize-textarea class="card-text form-control" placeholder="panel-undefined" ng-model="panelb[1].text" ng-change="textChange(1,&quot;b&quot;)">{{panelb[=indexx].text}}}</resize-textarea>
+                            <!--p.card-text hony-->
+                          </div>
+                          <div class="card-footer text-gray"><span>last update </span><span class="straight">{{panelb[1].datetime}}</span></div>
+                        </div>
+                        <div class="card text-white bg-success">
+                          <div class="card-body">
+                            <!--text-area.card-title Nanka Title-->
+                            <resize-textarea class="card-text form-control text-white bg-success" placeholder="panel-undefined" ng-model="panela[2].text" ng-change="textChange(2,&quot;a&quot;)">{{panela[=indexx].text}}</resize-textarea>
+                            <!--p.card-text honyahonya-->
+                            <pre> </pre>
+                          </div>
+                          <div class="card-footer"> <span>last update</span><span class="straight">{{panela[indexx].datetime}}</span></div>
+                        </div>
+                        <div class="card border-success">
+                          <div class="card-body">
+                            <!--text-area.card-title Nanka Title-->
+                            <!--text-area.card-text(rows='5') nanrakano text list-->
+                            <resize-textarea class="card-text form-control" placeholder="panel-undefined" ng-model="panelb[2].text" ng-change="textChange(2,&quot;b&quot;)">{{panelb[=indexx].text}}}</resize-textarea>
+                            <!--p.card-text hony-->
+                          </div>
+                          <div class="card-footer text-gray"><span>last update </span><span class="straight">{{panelb[2].datetime}}</span></div>
+                        </div>
+                        <div class="card text-white bg-danger">
+                          <div class="card-body">
+                            <!--text-area.card-title Nanka Title-->
+                            <resize-textarea class="card-text form-control text-white bg-danger" placeholder="panel-undefined" ng-model="panela[3].text" ng-change="textChange(3,&quot;a&quot;)">{{panela[=indexx].text}}</resize-textarea>
+                            <!--p.card-text honyahonya-->
+                            <pre> </pre>
+                          </div>
+                          <div class="card-footer"> <span>last update</span><span class="straight">{{panela[indexx].datetime}}</span></div>
+                        </div>
+                        <div class="card border-danger">
+                          <div class="card-body">
+                            <!--text-area.card-title Nanka Title-->
+                            <!--text-area.card-text(rows='5') nanrakano text list-->
+                            <resize-textarea class="card-text form-control" placeholder="panel-undefined" ng-model="panelb[3].text" ng-change="textChange(3,&quot;b&quot;)">{{panelb[=indexx].text}}}</resize-textarea>
+                            <!--p.card-text hony-->
+                          </div>
+                          <div class="card-footer text-gray"><span>last update </span><span class="straight">{{panelb[3].datetime}}</span></div>
+                        </div>
+                        <div class="card text-white bg-warning">
+                          <div class="card-body">
+                            <!--text-area.card-title Nanka Title-->
+                            <resize-textarea class="card-text form-control text-white bg-warning" placeholder="panel-undefined" ng-model="panela[4].text" ng-change="textChange(4,&quot;a&quot;)">{{panela[=indexx].text}}</resize-textarea>
+                            <!--p.card-text honyahonya-->
+                            <pre> </pre>
+                          </div>
+                          <div class="card-footer"> <span>last update</span><span class="straight">{{panela[indexx].datetime}}</span></div>
+                        </div>
+                        <div class="card border-warning">
+                          <div class="card-body">
+                            <!--text-area.card-title Nanka Title-->
+                            <!--text-area.card-text(rows='5') nanrakano text list-->
+                            <resize-textarea class="card-text form-control" placeholder="panel-undefined" ng-model="panelb[4].text" ng-change="textChange(4,&quot;b&quot;)">{{panelb[=indexx].text}}}</resize-textarea>
+                            <!--p.card-text hony-->
+                          </div>
+                          <div class="card-footer text-gray"><span>last update </span><span class="straight">{{panelb[4].datetime}}</span></div>
+                        </div>
+                        <div class="card text-white bg-info">
+                          <div class="card-body">
+                            <!--text-area.card-title Nanka Title-->
+                            <resize-textarea class="card-text form-control text-white bg-info" placeholder="panel-undefined" ng-model="panela[5].text" ng-change="textChange(5,&quot;a&quot;)">{{panela[=indexx].text}}</resize-textarea>
+                            <!--p.card-text honyahonya-->
+                            <pre> </pre>
+                          </div>
+                          <div class="card-footer"> <span>last update</span><span class="straight">{{panela[indexx].datetime}}</span></div>
+                        </div>
+                        <div class="card border-info">
+                          <div class="card-body">
+                            <!--text-area.card-title Nanka Title-->
+                            <!--text-area.card-text(rows='5') nanrakano text list-->
+                            <resize-textarea class="card-text form-control" placeholder="panel-undefined" ng-model="panelb[5].text" ng-change="textChange(5,&quot;b&quot;)">{{panelb[=indexx].text}}}</resize-textarea>
+                            <!--p.card-text hony-->
+                          </div>
+                          <div class="card-footer text-gray"><span>last update </span><span class="straight">{{panelb[5].datetime}}</span></div>
+                        </div>
+                        <div class="card text-white bg-light">
+                          <div class="card-body">
+                            <!--text-area.card-title Nanka Title-->
+                            <resize-textarea class="card-text form-control text-white bg-light" placeholder="panel-undefined" ng-model="panela[6].text" ng-change="textChange(6,&quot;a&quot;)">{{panela[=indexx].text}}</resize-textarea>
+                            <!--p.card-text honyahonya-->
+                            <pre> </pre>
+                          </div>
+                          <div class="card-footer"> <span>last update</span><span class="straight">{{panela[indexx].datetime}}</span></div>
+                        </div>
+                        <div class="card border-light">
+                          <div class="card-body">
+                            <!--text-area.card-title Nanka Title-->
+                            <!--text-area.card-text(rows='5') nanrakano text list-->
+                            <resize-textarea class="card-text form-control" placeholder="panel-undefined" ng-model="panelb[6].text" ng-change="textChange(6,&quot;b&quot;)">{{panelb[=indexx].text}}}</resize-textarea>
+                            <!--p.card-text hony-->
+                          </div>
+                          <div class="card-footer text-gray"><span>last update </span><span class="straight">{{panelb[6].datetime}}</span></div>
+                        </div>
+                        <div class="card text-white bg-dark">
+                          <div class="card-body">
+                            <!--text-area.card-title Nanka Title-->
+                            <resize-textarea class="card-text form-control text-white bg-dark" placeholder="panel-undefined" ng-model="panela[7].text" ng-change="textChange(7,&quot;a&quot;)">{{panela[=indexx].text}}</resize-textarea>
+                            <!--p.card-text honyahonya-->
+                            <pre> </pre>
+                          </div>
+                          <div class="card-footer"> <span>last update</span><span class="straight">{{panela[indexx].datetime}}</span></div>
+                        </div>
+                        <div class="card border-dark">
+                          <div class="card-body">
+                            <!--text-area.card-title Nanka Title-->
+                            <!--text-area.card-text(rows='5') nanrakano text list-->
+                            <resize-textarea class="card-text form-control" placeholder="panel-undefined" ng-model="panelb[7].text" ng-change="textChange(7,&quot;b&quot;)">{{panelb[=indexx].text}}}</resize-textarea>
+                            <!--p.card-text hony-->
+                          </div>
+                          <div class="card-footer text-gray"><span>last update </span><span class="straight">{{panelb[7].datetime}}</span></div>
+                        </div>
+                <!--  +colorx(i)(class=colors[i])-->
+      </div>
+      <div>{{panela[0].datetime}}</div>
+      <div>{{panela[0].text}}</div>
+      <p>moji_test</p>
+    </div>
+  </body>
+</html>
