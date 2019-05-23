@@ -20,6 +20,7 @@ app.directive('resizeTextarea', function() {
           console.log(height)
         };
         el.on('input', resize);
+        el.on('focus', resize);
       }
     }
   });

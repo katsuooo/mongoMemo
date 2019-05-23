@@ -124,5 +124,11 @@ app.controller('panelCont', function($scope, socket){
         }
         socket.emit('textChange', {index: textNo, textarea: text, _id: all[0]._id});
     });
+    /*
+     textarea click
+    */
+    $scope.textClick = ((index, label) => {
+        console.log('click');
+    });
 });
 
