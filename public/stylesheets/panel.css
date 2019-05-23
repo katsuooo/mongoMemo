@@ -46,6 +46,7 @@ body{
     }
 }
 .card-footer{
+    font-family: 'Kosugi';
     font-size: 0.8em;
 }  
 .text-gray{
@@ -57,9 +58,17 @@ body{
     padding:0;
     margin:0;
 }
-textarea{
+textarea.form-control {
     margin:0;
     padding:0;
+    font-family: 'Kosugi';
+    font-size:0.88rem;
+}
+textarea {
+    margin:0;
+    padding:0;
+    font-family: 'Kosugi';
+    font-size:0.88rem;
 }
 .straight{
     white-space:nowrap;

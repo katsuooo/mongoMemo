@@ -3,3 +3,15 @@
 }
 #datainBs4 { background: rgba(211, 221, 221, 0.932); padding: 3px; width: 100%; }
 #datainBs4 input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+
+textarea {
+    margin:0;
+    padding:0;
+    font-family: 'Kosugi';
+    font-size:0.88rem;
+}
+.card-body{
+   padding-top:6px;
+   padding-bottom:3px; 
+   font-size:0.8rem;
+}
