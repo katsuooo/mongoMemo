@@ -33,6 +33,13 @@ function panelMongoRead(socket){
 function panelMongoTextChange(socket, para){
     mongoMain.update(panelColName, socket, para);
 }
+/**
+ * to daily
+ * @param {*} socket 
+ */
+function panelToDaily(socket, text){
+    mongoMain.toDaily(socket, text);
+}
 
 /**
  * events main
@@ -45,6 +52,10 @@ function panelEvent(socket){
     socket.on('textChange', (para) => {
         console.log('textChange', para);
         panelMongoTextChange(socket, para);
+    });
+    socket.on('panelToDaily', (text)=>{
+        //console.log(text);
+        panelToDaily(socket, text);
     });
 }
 

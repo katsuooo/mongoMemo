@@ -1,3 +1,79 @@
+190525-2
+panel
+add data taransfer to mongo/daily.
+append to days
+panel data all cleared
+
+move button >>> panel title hover, butto appear
+or
+small icon right bottom
+
+
+
+
+
+
+
+190525
+issue
+-panel
+update up/down margin
+save button to daily mame and clear all
+readme.md
+container-fluent
+
+
+
+
+
+
+
+
+
+
+
+
+
+mongodb memo
+
+
+
+mongodb adress/port
+192.168.10.132/27017
+
+mongodbはlan上のpcにインストール
+mongoconfigの設定
+
+
+/*
+versions (180711)
+*/
+node version 9.11.2
+npm version 5.6.0
+yarn version 1.7.0
+
+
+/*
+start
+*/
+npm start
+or
+yarn run start
+
+index.html
+でmemo pageのselect
+
+
+/*
+simple memo page (controled by jquery)
+*/
+
+localhost:3000/hqtest
+
+
+
+
+
 190425-2
 noto sans TC
 、。の位置が浮いてる。

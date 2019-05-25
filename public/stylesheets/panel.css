@@ -73,8 +73,20 @@ textarea {
 .straight{
     white-space:nowrap;
 }
+.oi-external-link {
+    display:inline;
+    float:right;
+    padding-top:12px;
+    padding-right:3px;
+    font-size:26px;
+}
 
-  
-
+.tooltip-inner {
+    background-color: rgba(185, 165, 98, 0.4);/*73AD21; rgba(115,173,33,.6)*/ 
+    color: #343a40; 
+    border: 1px solid green;
+    padding: 2px;
+    font-size: 12px;
+}
 
   

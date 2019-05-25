@@ -130,5 +130,27 @@ app.controller('panelCont', function($scope, socket){
     $scope.textClick = ((index, label) => {
         console.log('click');
     });
+    /**
+     * move to daily icon click
+     * all panel data move to daily
+     * clear panels
+     */
+    $scope.moveClick=(()=>{
+        console.log('move!!!');
+        //console.log($scope.panela);
+        //console.log($scope.panelb);
+        const text = genPanelText($scope.panela, $scope.panelb);
+        console.log(text);
+        socket.emit('panelToDaily', text);
+    });
+    
 });
 
+/*
+ move icon tooltip
+*/
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+    $('.oi-external-link').tooltip({ boundary: 'window' });
+})
+  

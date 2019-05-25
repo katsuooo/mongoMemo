@@ -9,6 +9,7 @@ html(ng-app='panelApp')
     link(rel='stylesheet' href="https://fonts.googleapis.com/css?family=Kosugi|Kosugi+Maru|M+PLUS+1p|M+PLUS+Rounded+1c|Noto+Sans+JP|Noto+Sans+SC|Noto+Sans+TC|Sawarabi+Gothic|Sawarabi+Mincho")
     link(rel='stylesheet' href='./stylesheets/gfont.css')
     link(rel='stylesheet' href='./stylesheets/panel.css')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css')
     script(src='https://code.jquery.com/jquery-3.3.1.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js')
@@ -17,13 +18,16 @@ html(ng-app='panelApp')
     script(src='./javascripts/panel.js')  
     script(src='./javascripts/textareaResize.js')  
     script(src='./javascripts/services.js')   
-
+    script(src='./javascripts/panel_moved.js')
   body
     .container-fluid(ng-controller='panelCont')
       div {{panel[0].text}}
       .card-columns
         include panel_cards
-      h1(ng-click='click1()') cards panel
+      div
+        h1(ng-click='click1()' style='display:inline;') cards panel
+        div(style='display:inline;float:right;')
+          span.oi.oi-external-link(ng-click='moveClick()' data-toggle="tooltip" data-placement="top" title="move to daily db & all clear")
 
 
 

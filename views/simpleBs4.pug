@@ -9,15 +9,15 @@ html
     link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous")
     link(rel='stylesheet' href='/stylesheets/simpleBs4.css')
   body
-    section(class="container")
+    section.container-fluid
       h1= title
-    section(class="container")
+    section.container-fluid
       div#datainBs4
         textarea#m(cols=max_width,rows='10',autocomplete='off')
         button#send(class='btn btn-outline-danger btn-block', type='button') Send
-    section(class="container")
+    section.container-fluid
       div#message_list   
-    section(class="container")
+    section.container-fluid
       div#nextbtnbox
       button#nextbtn(class='btn btn-outline-info btn-block', type='button').
         next10
@@ -26,8 +26,6 @@ html
     br
     br
     script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js')
-    //script(src='http://code.jquery.com/jquery-1.11.1.js')
-    //script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
     script(src='https://code.jquery.com/jquery-3.3.1.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js')

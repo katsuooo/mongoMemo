@@ -176,6 +176,14 @@ var update = async(colName, socket, para) => {
         client.close();
     }
 }
+/**
+ * save text to 'Daily' db
+ * @param {*} socket 
+ * @param {string} text 
+ */
+var toDaily = async(socket, text) => {
+
+}
 
 /**
  * mongoif panel main
@@ -187,6 +195,9 @@ var mongoifPanel = {
     update: (colName, socket, para) => {
         console.log(para);
         update(colName, socket, para);
+    },
+    toDaily: (socket, text) => {
+        toDaily(socket, text);
     }
 }
 module.exports = mongoifPanel;
