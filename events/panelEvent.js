@@ -52,11 +52,9 @@ function panelToDaily(socket, text){
  */
 function panelEvent(socket){
     socket.on('panelStart', ()=>{
-        console.log('panel start');
         panelMongoRead(socket);
     });
     socket.on('textChange', (para) => {
-        console.log('textChange', para);
         panelMongoTextChange(socket, para);
     });
     /**

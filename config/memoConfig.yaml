@@ -1,35 +1,12 @@
-#
-# momo config
-#
-# renew from serverConfig.js
-#
-#
-#
-#
-#
-
-
-#
-# mongodb info
-#
-mongodb: 
-  url: mongodb://192.168.10.132
+mongodb:
+  url: 'mongodb://192.168.10.132'
   port: 27017
   db: myMemo
   collection:
     simple: text
     pgmemo: pgmemo
-#
-# pg memo labels
-#
-# date
-# title
-# type [python, node, angularjs, reactjs, javascript, html, css, bootstrap, c]
-# platform [win10, windows, ubuntu18, ubuntu, linux, mac, pic, embeded]
-# text
-#
-pgmemo :
-  type :
+pgmemo:
+  type:
     - python
     - node
     - angularjs
@@ -39,7 +16,7 @@ pgmemo :
     - html
     - css
     - c
-  platform :
+  platform:
     - win10
     - windows
     - ubuntu18
@@ -48,5 +25,4 @@ pgmemo :
     - mac
     - pic
     - embedded
-  recentMemoNum :
-    20
+  recentMemoNum: 20

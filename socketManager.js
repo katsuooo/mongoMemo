@@ -11,6 +11,7 @@ var dailyViewEvent = require('./events/dailyViewEvent');
 var dailyMemoEvent = require('./events/dailyMemoEvent');
 var gitRepoEvent = require('./events/gitRepoEvent');
 var panelEvent = require('./events/panelEvent');
+var indexEvent = require('./events/indexEvent');
 
 
 function socketManager(server){
@@ -38,6 +39,10 @@ function socketManager(server){
       dailyMemoEvent(socket);
       gitRepoEvent(socket);
       panelEvent(socket);
+      /**
+       * index event (mongodb url info)
+       */
+      indexEvent(socket);
     });
 }
 

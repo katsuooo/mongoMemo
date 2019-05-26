@@ -3,22 +3,30 @@ extends layout
 block content
   h1 mongoMemo
   br
+  span.url mongodb url: mongodb://
+    form.url_input()
+      input.url_in1(type='text' placefolder='xxx.xxx.xxx.xxx or url' value='localhost' ng-model='mongo_url')
+      span.url_input :
+      input.url_in2(type='number' value='27017' ng-model='mongo_port')
+    button.btn.btn-sm.btn-success#change.btn-circle(ng-click='url_change()')
+      span.oi.oi-loop-circular
+  br
+  br
+  br
   p memo panel
-  p mongodb 192.168.10.132:27017
   p db:myMemo
   p collection: panel
   p page: ./panel
   form(action='./panel')
     input(type='submit' value='panel')
   br
-  p gitrepo directory
-  p /home/katsu/gitRepo/
+  p gitrepo directory list
+  p /home/user/gitRepo/
   p page: ./gitRepo
   form(action='./gitRepos')
     input(type='submit' value='git repo')
   br
   p database
-  p mongodb 192.168.10.132:27017
   p db:myMemo
   p collection:daily
   p page: ./dailyMemo
@@ -26,7 +34,6 @@ block content
     input(type='submit' value='daily memo')
   br
   p database
-  p mongodb 192.168.10.132:27017
   p db:myMemo
   p collection:test(read)
   p collection:daily(write)
@@ -35,7 +42,6 @@ block content
     input(type='submit' value='daily view')
   br
   p database
-  p mongodb 192.168.10.132:27017
   p db:myMemo
   p collection:test
   p page: ./simpleBs4
