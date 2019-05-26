@@ -5,6 +5,7 @@ panel app event
 var mongoMain = require('../mongoif/mongoifPanel');
 var dateformat = require('dateformat');
 var moment = require('moment');
+var daily = require('./dailyMemoEvent');
 
 
 const panelColName = 'panel';
