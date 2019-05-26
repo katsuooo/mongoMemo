@@ -60,19 +60,17 @@ body{
 }
 textarea.form-control {
     margin:0;
-    padding:0;
+    /*padding:0;*/
+    padding:0 2%;
     font-family: 'Kosugi';
-    font-size:0.88rem;
+    /*font-size:0.88rem;*/
+    font-size: 0.79rem;
 }
-textarea {
-    margin:0;
-    padding:0;
-    font-family: 'Kosugi';
-    font-size:0.88rem;
-}
+
 .straight{
     white-space:nowrap;
 }
+/*
 .oi-external-link {
     display:inline;
     float:right;
@@ -80,13 +78,23 @@ textarea {
     padding-right:3px;
     font-size:26px;
 }
-
+*/
+/*343a40*//*28a745*/
+.oi-external-link {
+    display:inline;
+    float:left;
+    padding-top:22px;
+    padding-left:30px;
+    font-size:18px;
+    color: #28a745;
+}
 .tooltip-inner {
     background-color: rgba(185, 165, 98, 0.4);/*73AD21; rgba(115,173,33,.6)*/ 
     color: #343a40; 
-    border: 1px solid green;
+    /*border: 1px solid green;*/
     padding: 2px;
     font-size: 12px;
 }
-
-  
+textarea.form-control.bg-light{
+    color: #495057 !important;
+}
