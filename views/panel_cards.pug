@@ -2,7 +2,7 @@ mixin colorx(index)
   .card.text-white(class!='bg-'+attributes.class)
     .card-body
       //text-area.card-title Nanka Title
-      resize-textarea.card-text.form-control.text-white(class!='bg-'+attributes.class placeholder='panel-'+index ng-model='panela['+index+'].text' ng-change='textChange('+index+',"a")')= '{{panela['+index+'].text}}'
+      resize-textarea.card-text.form-control.text-white(class!='bg-'+attributes.class placeholder='panel-'+index*2 ng-model='panela['+index+'].text' ng-change='textChange('+index+',"a")')= '{{panela['+index+'].text}}'
       //p.card-text honyahonya
     .card-footer 
       span.straight last update&nbsp;
@@ -11,7 +11,7 @@ mixin colorx(index)
     .card-body
       //text-area.card-title Nanka Title
       //text-area.card-text(rows='5') nanrakano text list
-      resize-textarea.card-text.form-control(placeholder='panel-'+index ng-model='panelb['+index+'].text' ng-change='textChange('+index+',"b")')= '{{panelb['+index+'].text}}}'
+      resize-textarea.card-text.form-control(placeholder='panel-'+((index*2)+1) ng-model='panelb['+index+'].text' ng-change='textChange('+index+',"b")')= '{{panelb['+index+'].text}}}'
       //p.card-text hony
     .card-footer.text-gray
       span.straight last update&nbsp;
