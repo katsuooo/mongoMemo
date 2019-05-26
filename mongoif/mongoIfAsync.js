@@ -5,17 +5,11 @@
 var mongodb = require('mongodb'), MongoClient = mongodb.MongoClient;
 var fs = require('fs');
 var CONFIG = require('../config/config').CONFIG;
+var moment = require('moment');
 
 const MONGO_URL = CONFIG.mongodb.url + ':' + CONFIG.mongodb.port;
 const dbName = CONFIG.mongodb.db;
-//const collectionName = CONFIG.mongodb.collection.pgmemo
 
-/*
- connect
-*/
-var connect = function(dbName){
-
-}
 /*
  dbとコレクションのリスト表示
 */
@@ -128,8 +122,19 @@ function mixin(dailys){
 
     return text;
 }
-
-
+/**
+ * 
+ * @param {day:{string}, text:{string}} dayJson
+ */
+function checkType(dayJson){
+    if (typeof(dayJson) === 'string'){
+        const text = dayJson;
+        dayJson = {};
+        dayJson.text = text;
+        dayJson.day = moment().format('YYYY-MM-DD');
+    }
+    return dayJson;
+}
 /*
  daily jsonの追加
  すでにあるかチェック
@@ -145,12 +150,13 @@ function mixin(dailys){
 };
 サーチで複数のデイデータが見つかった場合は先に、ミキシンする。
 */
+
 async function addDayJson(colName, dayJson){
+    dayJson = checkType(dayJson);
     const client = await mongodb.MongoClient.connect(MONGO_URL, {useNewUrlParser:true});
     const db = await client.db(dbName);
     const collection = await db.collection(colName);
     var d = await collection.find({day: dayJson.day}).toArray();
-    console.log('nagasa', d.length);
     var newd = {};
     if(d.length >= 1){
         //d = mixin(d);
@@ -175,8 +181,6 @@ async function addDayJson(colName, dayJson){
         console.error(err.result);
     }
     client.close();
-    //console.log(d);
-
 }
 
 

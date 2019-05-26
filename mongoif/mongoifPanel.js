@@ -117,7 +117,7 @@ var readAll = async(colName, socket) => {
         client = await mongodb.MongoClient.connect(MONGO_URL, {useNewUrlParser:true});
         const db = await client.db(dbName);
         const collection = await db.collection(colName);
-        let d = await collection.find({}).toArray();
+        let d = await collection.find({title:'current'}).toArray();
         if(!checkpd(d)){
             d = paneld;
             write_no_close(collection, d);
@@ -130,7 +130,6 @@ var readAll = async(colName, socket) => {
         client.close();
     }
 }
-
 
 
 /**
@@ -177,12 +176,95 @@ var update = async(colName, socket, para) => {
     }
 }
 /**
- * save text to 'Daily' db
+ * current data clear 
+ * @param {*} colName 
  * @param {*} socket 
- * @param {string} text 
  */
-var toDaily = async(socket, text) => {
+/*
+{ datetime: '2019-05-18T14:31:17+09:00',
+  title: 'current',
+  panel:
+   [ { p_title: '', datetime: '2019-05-22T22:24:07', text: [] },
+      ... * 15
+   ] }
+*/
+var clearCurrent = async(colName, socket) => {
+    const cls_time = moment().format().split('+')[0];
+    const cls_panel = [];
+    for (let i=0; i<16; i++){
+        cls_panel.push({ p_title: '', datetime: cls_time, text: [] });
+    }
+    try{
+        client = await mongodb.MongoClient.connect(MONGO_URL, {useNewUrlParser:true});
+        const db = await client.db(dbName);
+        const collection = await db.collection(colName);
+        //let docs = await collection.update({title: 'current'}, {$set: {datetime: cls_time, panel: cls_panel} });
+        let docs1 = await collection.update({title: 'current'}, {$set: {datetime: cls_time} });
+        let docs2 = await collection.update({title: 'current'}, {$set: {panel: cls_panel} });        
+    }catch(error){
+        console.log(error);
+    } finally{
+        //client.close();
+        readAll(colName, socket);
+    }
+}
+/**
+ * current >>> timestump title data
+ * @param {*} colName 
+ */
 
+var saveCurrent = async(d, colName, socket) => {
+    let client;
+    let newd = d;
+
+    newd.title = moment().format().split('+')[0];
+    console.log('title', newd.title);
+    try{
+        client = await mongodb.MongoClient.connect(MONGO_URL, {useNewUrlParser:true});
+        const db = await client.db(dbName);
+        const collection = await db.collection(colName);
+        if (typeof(newd['_id']) !== undefined){
+            console.log('newd._id', newd._id);
+            delete newd._id;
+        }
+        console.log('data keys',newd);
+        let doc = await collection.insert(newd);
+    }catch(error){
+        console.log(error);
+    } finally{
+        //client.close();
+        //saveCurrent()
+        console.log('save end');
+        clearCurrent(colName, socket);
+    }
+}
+
+/**
+ * current data save and clear
+ * save is already done to daily, so clear only do.
+ * @param {*} socket 
+ * 
+ */
+var saveAndClear = async(colName, socket) => {
+    let client;
+    let d;
+    try{
+        client = await mongodb.MongoClient.connect(MONGO_URL, {useNewUrlParser:true});
+        const db = await client.db(dbName);
+        const collection = await db.collection(colName);
+        d = await collection.find({title:'current'}).toArray();
+        /*
+        if(!checkpd(d)){
+            d = paneld;
+            write_no_close(collection, d);
+            d._id = writeId;
+        }
+        */
+    }catch(error){
+        console.log(error);
+    } finally{
+        saveCurrent(d[0], colName, socket);
+    }
 }
 
 /**
@@ -193,11 +275,10 @@ var mongoifPanel = {
         readAll(colName, socket);
     },
     update: (colName, socket, para) => {
-        console.log(para);
         update(colName, socket, para);
     },
-    toDaily: (socket, text) => {
-        toDaily(socket, text);
+    saveAndClear: (colName, socket) => {
+        saveAndClear(colName, socket);
     }
 }
 module.exports = mongoifPanel;

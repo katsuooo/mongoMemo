@@ -5,12 +5,14 @@ panel app event
 var mongoMain = require('../mongoif/mongoifPanel');
 var dateformat = require('dateformat');
 var moment = require('moment');
-var daily = require('./dailyMemoEvent');
+var dailyMongo = require('../mongoif/mongoIfAsync.js');
 
 
 const panelColName = 'panel';
 
-
+/*
+dark 343140
+*/
 
 
 
@@ -35,11 +37,14 @@ function panelMongoTextChange(socket, para){
     mongoMain.update(panelColName, socket, para);
 }
 /**
- * to daily
+ * to daily / save text to daily, panels are clear
  * @param {*} socket 
  */
 function panelToDaily(socket, text){
-    mongoMain.toDaily(socket, text);
+    const dailyColName = 'daily';
+
+    dailyMongo.addDayJson(dailyColName, text);
+    mongoMain.saveAndClear(panelColName, socket);
 }
 
 /**
@@ -54,6 +59,9 @@ function panelEvent(socket){
         console.log('textChange', para);
         panelMongoTextChange(socket, para);
     });
+    /**
+     * data move icon click event
+     */
     socket.on('panelToDaily', (text)=>{
         //console.log(text);
         panelToDaily(socket, text);
