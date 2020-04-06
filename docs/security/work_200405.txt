@@ -1,0 +1,54 @@
+security alart
+
+kind-of
+now 3.0.2
+require 6.0.3
+
+yarn.lockのバージョンをかえてみる。
+kind-of@^6.0.3:
+と先頭だけかえて、yarn install
+すると,updateされた。
+
+yarn start
+起動はした。dbのurl変更はできた。
+該当データがないので、これ以上確認できない。
+
+
+acorn
+now
+require 5.7.4
+
+acorn-globals@^3.0.0:
+acorn@^3.1.0:
+acorn@^4.0.4, acorn@~4.0.2:
+
+いろいろある。
+globalsはそのまま
+@とそのあとのversionとの違いはなんだ？
+yarn.lockをかえてyarn installするも元にもどる。
+
+package.json
+    "cookie-parser": "~1.4.4",
+    "dateformat": "^3.0.3",
+    "debug": "~4.1.1",
+    "express": "~4.17.1",
+    "http-errors": "~1.7.3",
+    "js-yaml": "^3.13.1",
+    "moment": "^2.24.0",
+    "mongodb": "^3.2.7",
+    "morgan": "~1.9.1",
+    "pug": "^2.0.3",
+    "socket.io": "^2.2.0"
+これを一つづつ追加してyarn installする。
+全部更新してみるか。
+"cookie-parser": "~1.4.5",
+"dateformat": "^3.0.3",
+"debug": "~4.1.1",
+"express": "~4.17.1",
+"http-errors": "~1.7.2",
+"js-yaml": "^3.13.1",
+"moment": "^2.24.0",
+"mongodb": "^3.5.5",
+"morgan": "~1.10.0",
+"pug": "^2.0.4",
+ "socket.io": "^2.3.0"
