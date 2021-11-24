@@ -3,6 +3,7 @@
  ~/gitRepo/ディレクトリ内のリポジトリの表示
 */
 var socket = io.connect();
+var escape = require('escape-html')
 
 /*
  templates
@@ -17,7 +18,7 @@ socket.on('gitRepoFiles_xxx', function(files){
     var newTag = '';
     files.forEach( (file) => {
         var x = liTag;
-        x = x.replace('rname', file);
+        x = x.replace('rname', escape(file));
         newTag += x;
     });
     $('#gitrepoList').append(newTag);
